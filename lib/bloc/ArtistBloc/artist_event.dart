@@ -1,4 +1,8 @@
 part of 'artist_bloc.dart';
 
 @immutable
-sealed class ArtistEvent {}
+ class ArtistEvent extends Equatable{
+  @override
+
+  List<Object?> get props =>[];
+ }
