@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:voice_app/core/demo.dart';
+import 'package:voice_app/core/screens/home/home.dart';
+import 'package:voice_app/product/repository/artist_repository.dart';
 import 'dart:io';
 
 import 'package:voice_app/product/repository/voice_repo.dart';
@@ -11,8 +14,11 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DemoApp(),
+    return RepositoryProvider(
+      create: (context) => ArtistRepository(),
+      child: MaterialApp(
+        home: Home(),
+      ),
     );
   }
 }
@@ -23,8 +29,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
- 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
               decoration: InputDecoration(labelText: 'Enter Text'),
             ),
             DropdownButton<String>(
-              value:  VoiceRepo.selectedVoice,
+              value: VoiceRepo.selectedVoice,
               onChanged: (String? newValue) {
                 setState(() {
                   VoiceRepo.selectedVoice = newValue!;

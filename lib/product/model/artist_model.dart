@@ -1,191 +1,186 @@
-// To parse this JSON data, do
-//
-//     final artistModel = artistModelFromMap(jsonString);
+import 'package:equatable/equatable.dart';
 
-import 'dart:convert';
+class ArtistModel with EquatableMixin {
+  List<Voices>? voices;
 
-ArtistModel artistModelFromMap(String str) => ArtistModel.fromMap(json.decode(str));
+  ArtistModel({
+    this.voices,
+  });
 
-String artistModelToMap(ArtistModel data) => json.encode(data.toMap());
+  @override
+  List<Object?> get props => [voices];
 
-class ArtistModel {
-    List<Voice>? voices;
-
-    ArtistModel({
-        this.voices,
-    });
-
-    ArtistModel copyWith({
-        List<Voice>? voices,
-    }) => 
-        ArtistModel(
-            voices: voices ?? this.voices,
-        );
-
-    factory ArtistModel.fromMap(Map<String, dynamic> json) => ArtistModel(
-        voices: json["voices"] == null ? [] : List<Voice>.from(json["voices"]!.map((x) => Voice.fromMap(x))),
+  ArtistModel copyWith({
+    List<Voices>? voices,
+  }) {
+    return ArtistModel(
+      voices: voices ?? this.voices,
     );
+  }
 
-    Map<String, dynamic> toMap() => {
-        "voices": voices == null ? [] : List<dynamic>.from(voices!.map((x) => x.toMap())),
+  Map<String, dynamic> toJson() {
+    return {
+      'voices': voices,
     };
+  }
+
+  factory ArtistModel.fromJson(Map<String, dynamic> json) {
+    return ArtistModel(
+      voices: (json['voices'] as List<dynamic>?)
+          ?.map((e) => Voices.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 }
 
-class Voice {
-    String? voiceId;
-    String? name;
-    String? category;
-    FineTuning? fineTuning;
-    Labels? labels;
-    String? previewUrl;
-    List<dynamic>? highQualityBaseModelIds;
+class Voices with EquatableMixin {
+  String? voiceId;
+  String? name;
+  String? category;
+  FineTuning? fineTuning;
+  Labels? labels;
+  String? previewUrl;
 
-    Voice({
-        this.voiceId,
-        this.name,
-        this.category,
-        this.fineTuning,
-        this.labels,
-        this.previewUrl,
-        this.highQualityBaseModelIds,
-    });
+  Voices({
+    this.voiceId,
+    this.name,
+    this.category,
+    this.fineTuning,
+    this.labels,
+    this.previewUrl,
+  });
 
-    Voice copyWith({
-        String? voiceId,
-        String? name,
-        String? category,
-        FineTuning? fineTuning,
-        Labels? labels,
-        String? previewUrl,
-        List<dynamic>? highQualityBaseModelIds,
-    }) => 
-        Voice(
-            voiceId: voiceId ?? this.voiceId,
-            name: name ?? this.name,
-            category: category ?? this.category,
-            fineTuning: fineTuning ?? this.fineTuning,
-            labels: labels ?? this.labels,
-            previewUrl: previewUrl ?? this.previewUrl,
-            highQualityBaseModelIds: highQualityBaseModelIds ?? this.highQualityBaseModelIds,
-        );
+  @override
+  List<Object?> get props =>
+      [voiceId, name, category, fineTuning, labels, previewUrl];
 
-    factory Voice.fromMap(Map<String, dynamic> json) => Voice(
-        voiceId: json["voice_id"],
-        name: json["name"],
-        category: json["category"],
-        fineTuning: json["fine_tuning"] == null ? null : FineTuning.fromMap(json["fine_tuning"]),
-        labels: json["labels"] == null ? null : Labels.fromMap(json["labels"]),
-        previewUrl: json["preview_url"],
-        highQualityBaseModelIds: json["high_quality_base_model_ids"] == null ? [] : List<dynamic>.from(json["high_quality_base_model_ids"]!.map((x) => x)),
+  Voices copyWith({
+    String? voiceId,
+    String? name,
+    String? category,
+    FineTuning? fineTuning,
+    Labels? labels,
+    String? previewUrl,
+  }) {
+    return Voices(
+      voiceId: voiceId ?? this.voiceId,
+      name: name ?? this.name,
+      category: category ?? this.category,
+      fineTuning: fineTuning ?? this.fineTuning,
+      labels: labels ?? this.labels,
+      previewUrl: previewUrl ?? this.previewUrl,
     );
+  }
 
-    Map<String, dynamic> toMap() => {
-        "voice_id": voiceId,
-        "name": name,
-        "category": category,
-        "fine_tuning": fineTuning?.toMap(),
-        "labels": labels?.toMap(),
-        "preview_url": previewUrl,
-        "high_quality_base_model_ids": highQualityBaseModelIds == null ? [] : List<dynamic>.from(highQualityBaseModelIds!.map((x) => x)),
+  Map<String, dynamic> toJson() {
+    return {
+      'voice_id': voiceId,
+      'name': name,
+      'category': category,
+      'fine_tuning': fineTuning,
+      'labels': labels,
+      'preview_url': previewUrl,
     };
+  }
+
+  factory Voices.fromJson(Map<String, dynamic> json) {
+    return Voices(
+      voiceId: json['voice_id'] as String?,
+      name: json['name'] as String?,
+      category: json['category'] as String?,
+      fineTuning: json['fine_tuning'] == null
+          ? null
+          : FineTuning.fromJson(json['fine_tuning'] as Map<String, dynamic>),
+      labels: json['labels'] == null
+          ? null
+          : Labels.fromJson(json['labels'] as Map<String, dynamic>),
+      previewUrl: json['preview_url'] as String?,
+    );
+  }
 }
 
-class FineTuning {
-    dynamic language;
-    List<dynamic>? verificationFailures;
-    int? verificationAttemptsCount;
-    dynamic sliceIds;
-    dynamic manualVerification;
-    bool? manualVerificationRequested;
+class FineTuning with EquatableMixin {
+  String? language;
 
-    FineTuning({
-        this.language,
-        this.verificationFailures,
-        this.verificationAttemptsCount,
-        this.sliceIds,
-        this.manualVerification,
-        this.manualVerificationRequested,
-    });
+  FineTuning({
+    this.language,
+  });
 
-    FineTuning copyWith({
-        dynamic language,
-        List<dynamic>? verificationFailures,
-        int? verificationAttemptsCount,
-        dynamic sliceIds,
-        dynamic manualVerification,
-        bool? manualVerificationRequested,
-    }) => 
-        FineTuning(
-            language: language ?? this.language,
-            verificationFailures: verificationFailures ?? this.verificationFailures,
-            verificationAttemptsCount: verificationAttemptsCount ?? this.verificationAttemptsCount,
-            sliceIds: sliceIds ?? this.sliceIds,
-            manualVerification: manualVerification ?? this.manualVerification,
-            manualVerificationRequested: manualVerificationRequested ?? this.manualVerificationRequested,
-        );
+  @override
+  List<Object?> get props => [language];
 
-    factory FineTuning.fromMap(Map<String, dynamic> json) => FineTuning(
-        language: json["language"],
-        verificationFailures: json["verification_failures"] == null ? [] : List<dynamic>.from(json["verification_failures"]!.map((x) => x)),
-        verificationAttemptsCount: json["verification_attempts_count"],
-        sliceIds: json["slice_ids"],
-        manualVerification: json["manual_verification"],
-        manualVerificationRequested: json["manual_verification_requested"],
+  FineTuning copyWith({
+    String? language,
+  }) {
+    return FineTuning(
+      language: language ?? this.language,
     );
+  }
 
-    Map<String, dynamic> toMap() => {
-        "language": language,
-        "verification_failures": verificationFailures == null ? [] : List<dynamic>.from(verificationFailures!.map((x) => x)),
-        "verification_attempts_count": verificationAttemptsCount,
-        "slice_ids": sliceIds,
-        "manual_verification": manualVerification,
-        "manual_verification_requested": manualVerificationRequested,
+  Map<String, dynamic> toJson() {
+    return {
+      'language': language,
     };
+  }
+
+  factory FineTuning.fromJson(Map<String, dynamic> json) {
+    return FineTuning(
+      language: json['language'] as String?,
+    );
+  }
 }
 
-class Labels {
-    String? accent;
-    String? description;
-    String? age;
-    String? gender;
-    String? useCase;
+class Labels with EquatableMixin {
+  String? accent;
+  String? description;
+  String? age;
+  String? gender;
+  String? useCase;
 
-    Labels({
-        this.accent,
-        this.description,
-        this.age,
-        this.gender,
-        this.useCase,
-    });
+  Labels({
+    this.accent,
+    this.description,
+    this.age,
+    this.gender,
+    this.useCase,
+  });
 
-    Labels copyWith({
-        String? accent,
-        String? description,
-        String? age,
-        String? gender,
-        String? useCase,
-    }) => 
-        Labels(
-            accent: accent ?? this.accent,
-            description: description ?? this.description,
-            age: age ?? this.age,
-            gender: gender ?? this.gender,
-            useCase: useCase ?? this.useCase,
-        );
+  @override
+  List<Object?> get props => [accent, description, age, gender, useCase];
 
-    factory Labels.fromMap(Map<String, dynamic> json) => Labels(
-        accent: json["accent"],
-        description: json["description"],
-        age: json["age"],
-        gender: json["gender"],
-        useCase: json["use case"],
+  Labels copyWith({
+    String? accent,
+    String? description,
+    String? age,
+    String? gender,
+    String? useCase,
+  }) {
+    return Labels(
+      accent: accent ?? this.accent,
+      description: description ?? this.description,
+      age: age ?? this.age,
+      gender: gender ?? this.gender,
+      useCase: useCase ?? this.useCase,
     );
+  }
 
-    Map<String, dynamic> toMap() => {
-        "accent": accent,
-        "description": description,
-        "age": age,
-        "gender": gender,
-        "use case": useCase,
+  Map<String, dynamic> toJson() {
+    return {
+      'accent': accent,
+      'description': description,
+      'age': age,
+      'gender': gender,
+      'use case': useCase,
     };
+  }
+
+  factory Labels.fromJson(Map<String, dynamic> json) {
+    return Labels(
+      accent: json['accent'] as String?,
+      description: json['description'] as String?,
+      age: json['age'] as String?,
+      gender: json['gender'] as String?,
+      useCase: json['use case'] as String?,
+    );
+  }
 }
