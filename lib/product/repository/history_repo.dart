@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:voice_app/product/model/lg_model.dart';
+import 'package:voice_app/product/model/history_model.dart';
 
-class LanguageRepository {
-  final String _baseUrl = 'https://api.elevenlabs.io/v1/models';
+class HistoryRepository {
+  final String _baseUrl = 'https://api.elevenlabs.io/v1/history?page_size=100';
 
   final Dio _dio = Dio();
 
