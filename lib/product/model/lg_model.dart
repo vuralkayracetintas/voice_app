@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Response with EquatableMixin {
+class LanguageModel with EquatableMixin {
   String? modelId;
   String? name;
   bool? canBeFinetuned;
@@ -16,7 +16,7 @@ class Response with EquatableMixin {
   int? maxCharactersRequestSubscribedUser;
   List<Languages>? languages;
 
-  Response({
+  LanguageModel({
     this.modelId,
     this.name,
     this.canBeFinetuned,
@@ -51,7 +51,7 @@ class Response with EquatableMixin {
         languages
       ];
 
-  Response copyWith({
+  LanguageModel copyWith({
     String? modelId,
     String? name,
     bool? canBeFinetuned,
@@ -67,7 +67,7 @@ class Response with EquatableMixin {
     int? maxCharactersRequestSubscribedUser,
     List<Languages>? languages,
   }) {
-    return Response(
+    return LanguageModel(
       modelId: modelId ?? this.modelId,
       name: name ?? this.name,
       canBeFinetuned: canBeFinetuned ?? this.canBeFinetuned,
@@ -107,8 +107,8 @@ class Response with EquatableMixin {
     };
   }
 
-  factory Response.fromJson(Map<String, dynamic> json) {
-    return Response(
+  factory LanguageModel.fromJson(Map<String, dynamic> json) {
+    return LanguageModel(
       modelId: json['model_id'] as String?,
       name: json['name'] as String?,
       canBeFinetuned: json['can_be_finetuned'] as bool?,

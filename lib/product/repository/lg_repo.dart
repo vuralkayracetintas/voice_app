@@ -1,16 +1,16 @@
 import 'package:dio/dio.dart';
-import 'package:voice_app/product/model/artist_model.dart';
+import 'package:voice_app/product/model/lg_model.dart';
 
-class ArtistRepository {
-  final String _baseUrl = 'https://api.elevenlabs.io/v1/voices';
+class LanguageRepository {
+  final String _baseUrl = 'https://api.elevenlabs.io/v1/models';
 
   final Dio _dio = Dio();
 
-  Future<ArtistModel> getArtistData() async {
+  Future<LanguageModel> getLanguageData() async {
     try {
       final response = await _dio.get(_baseUrl);
       if (response.statusCode == 200) {
-        return ArtistModel.fromJson(response.data);
+        return LanguageModel.fromJson(response.data);
       } else {
         throw Exception('Error ${response.statusCode}');
       }
