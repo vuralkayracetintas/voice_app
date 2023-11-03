@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_app/bloc/VoiceBloc/voice_bloc.dart';
+import 'package:voice_app/core/screens/login/sign_in_mail.dart';
 import 'package:voice_app/core/screens/login/welcome_login.dart';
 import 'package:voice_app/firebase_options.dart';
 
@@ -22,9 +23,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RepositoryProvider(
       create: (context) => VoiceRepository(),
-      child: const MaterialApp(
-        home: WelcomeLogin(),
-      ),
+      child: MaterialApp(
+          // home: WelcomeLogin(),
+          theme: ThemeData(
+            useMaterial3: true,
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)
+                .copyWith(background: const Color(0xff0D0F13)),
+          ),
+          home: const WelcomeLogin()),
     );
   }
 }
