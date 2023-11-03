@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)
                 .copyWith(background: const Color(0xff0D0F13)),
           ),
-          home: const WelcomeLogin()),
+          home: const SignInMail()),
     );
   }
 }

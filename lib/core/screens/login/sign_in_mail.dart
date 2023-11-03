@@ -96,8 +96,8 @@ class _SignInMailState extends State<SignInMail> {
               ],
             ),
             CustomButton(
-              description: 'Sign In with Mail',
-              backgroundColor: Color(0xff1A1E24),
+              description: 'Sign In',
+              backgroundColor: Color(0xff235dff),
               onPressed: () {},
             ),
             Row(
