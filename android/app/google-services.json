@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "578658308946",
+    "project_id": "voice-27729",
+    "storage_bucket": "voice-27729.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:578658308946:android:eab9b63701820893bae08b",
+        "android_client_info": {
+          "package_name": "com.example.voice_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3uFeUOqVmdWKru7_XqONujDDLxFu8Dww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
