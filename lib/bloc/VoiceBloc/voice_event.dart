@@ -1,8 +1,10 @@
 part of 'voice_bloc.dart';
 
-sealed class VoiceEvent extends Equatable {
+abstract class VoiceEvent extends Equatable {
   const VoiceEvent();
+}
 
+class LoadVoice extends VoiceEvent {
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }

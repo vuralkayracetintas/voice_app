@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:voice_app/product/repository/artist_repository.dart';
+import 'package:voice_app/bloc/VoiceBloc/voice_bloc.dart';
+
 import 'package:voice_app/product/repository/voice_repo.dart';
 
 void main() => runApp(const MyApp());
@@ -11,9 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider(
-      create: (context) => ArtistRepository(),
+      create: (context) => VoiceRepository(),
       child: const MaterialApp(
-        home: MyHomePage(),
+        home: Deneme(),
       ),
     );
   }
@@ -41,19 +42,19 @@ class _MyHomePageState extends State<MyHomePage> {
               maxLines: 10,
               onChanged: (value) {
                 setState(() {
-                  VoiceRepo.textToConvert = value;
+                  VoiceRepository.textToConvert = value;
                 });
               },
               decoration: const InputDecoration(labelText: 'Enter Text'),
             ),
             DropdownButton<String>(
-              value: VoiceRepo.selectedVoice,
+              value: VoiceRepository.selectedVoice,
               onChanged: (String? newValue) {
                 setState(() {
-                  VoiceRepo.selectedVoice = newValue!;
+                  VoiceRepository.selectedVoice = newValue!;
                 });
               },
-              items: VoiceRepo.voiceOptions.map((String voice) {
+              items: VoiceRepository.voiceOptions.map((String voice) {
                 return DropdownMenuItem<String>(
                   value: voice,
                   child: Text(voice),
@@ -61,10 +62,91 @@ class _MyHomePageState extends State<MyHomePage> {
               }).toList(),
             ),
             const ElevatedButton(
-              onPressed: VoiceRepo.downloadFile,
+              onPressed: VoiceRepository.downloadFile,
               child: Text('Convert to Speech'),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class Deneme extends StatefulWidget {
+  const Deneme({super.key});
+
+  @override
+  State<Deneme> createState() => _DenemeState();
+}
+
+class _DenemeState extends State<Deneme> {
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (BuildContext context) => VoiceBloc(
+        RepositoryProvider.of(context),
+      )..add(LoadVoice()),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Text to Speech Conversion'),
+        ),
+        body: BlocBuilder<VoiceBloc, VoiceState>(
+          builder: (context, state) {
+            debugPrint('state ${state.runtimeType}');
+            if (state is VoiceInitial || state is VoiceLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is VoiceError) {
+              return Center(
+                child: Text(state.message),
+              );
+            } else if (state is VoiceLoaded) {
+              // API'den gelen ses kimliklerini içerir
+
+              return RefreshIndicator(
+                  onRefresh: () async {
+                    BlocProvider.of<VoiceBloc>(context).add(LoadVoice());
+                  },
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextFormField(
+                          maxLines: 10,
+                          onChanged: (value) {
+                            setState(() {
+                              VoiceRepository.textToConvert = value;
+                            });
+                          },
+                          decoration:
+                              const InputDecoration(labelText: 'Enter Text'),
+                        ),
+                        DropdownButton<String>(
+                          value: VoiceRepository.selectedVoice,
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              VoiceRepository.selectedVoice = newValue!;
+                            });
+                          },
+                          items:
+                              VoiceRepository.voiceOptions.map((String voice) {
+                            return DropdownMenuItem<String>(
+                              value: voice,
+                              child: Text(voice),
+                            );
+                          }).toList(),
+                        ),
+                        const ElevatedButton(
+                          onPressed: VoiceRepository.downloadFile,
+                          child: Text('Convert to Speech'),
+                        ),
+                      ],
+                    ),
+                  ));
+            }
+            return const SizedBox.shrink();
+          },
         ),
       ),
     );

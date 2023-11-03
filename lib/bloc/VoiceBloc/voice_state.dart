@@ -1,10 +1,28 @@
 part of 'voice_bloc.dart';
 
-sealed class VoiceState extends Equatable {
+abstract class VoiceState extends Equatable {
   const VoiceState();
-  
-  @override
-  List<Object> get props => [];
 }
 
-final class VoiceInitial extends VoiceState {}
+class VoiceInitial extends VoiceState {
+  @override
+  List<Object?> get props => [];
+}
+
+class VoiceLoading extends VoiceState {
+  @override
+  List<Object?> get props => [];
+}
+
+class VoiceLoaded extends VoiceState {
+  @override
+  List<Object?> get props => [];
+}
+
+class VoiceError extends VoiceState {
+  final String message;
+
+  const VoiceError(this.message);
+  @override
+  List<Object?> get props => [message];
+}

@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
-class VoiceRepo {
-  static final String baseUrl = 'https://tts.verbatik.com/api/v1/tts';
+class VoiceRepository {
+  static const String baseUrl = 'https://tts.verbatik.com/api/v1/tts';
 
   static final Map<String, String> headers = {
     'Content-Type': 'application/ssml+xml',
