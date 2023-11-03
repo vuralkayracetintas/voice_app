@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_app/bloc/VoiceBloc/voice_bloc.dart';
 import 'package:voice_app/core/screens/login/welcome_login.dart';
-import 'package:voice_app/demo_app.dart';
 import 'package:voice_app/firebase_options.dart';
 
 import 'package:voice_app/product/repository/voice_repo.dart';
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
     return RepositoryProvider(
       create: (context) => VoiceRepository(),
       child: const MaterialApp(
-        home: DemoApp(),
+        home: WelcomeLogin(),
       ),
     );
   }
