@@ -1,30 +1,26 @@
-
-
-
-
-
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
-class VoiceRepo{
 
+class VoiceRepo {
+  static final String baseUrl = 'https://tts.verbatik.com/api/v1/tts';
 
-static  final String baseUrl = 'https://tts.verbatik.com/api/v1/tts';
-
-  static final Map<String,String> headers = {    
+  static final Map<String, String> headers = {
     'Content-Type': 'application/ssml+xml',
     'Authorization':
-        'Bearer \$2y\$10\$qJomGdIkAM.BGHOLKuQoSusCjFfQI0dJyVCxDnG8zT5ML5FAtDXGy',};
-  static  String textToConvert = "";
-  static  String selectedVoice = "en-US-ChristopherNeural";
+        'Bearer \$2y\$10\$qJomGdIkAM.BGHOLKuQoSusCjFfQI0dJyVCxDnG8zT5ML5FAtDXGy',
+  };
+  static String textToConvert = "";
+  static String selectedVoice = "en-US-ChristopherNeural";
 
-   static final List<String> voiceOptions = [
+  static final List<String> voiceOptions = [
     "en-US-ChristopherNeural",
     "tr-TR-AhmetNeural",
     "tr-TR-EmelNeural",
+    "ar-EG-SalmaNeural"
   ];
-        static   Future<void> downloadFile() async {
+  static Future<void> downloadFile() async {
     final String data = """
 <speak version='1.0'>
     <voice name='$selectedVoice'>$textToConvert</voice>
