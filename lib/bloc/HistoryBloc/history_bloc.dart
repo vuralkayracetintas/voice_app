@@ -6,8 +6,6 @@ part 'history_state.dart';
 
 class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
   HistoryBloc() : super(HistoryInitial()) {
-    on<HistoryEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<HistoryEvent>((event, emit) {});
   }
 }

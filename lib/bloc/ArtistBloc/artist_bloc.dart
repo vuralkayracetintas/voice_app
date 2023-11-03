@@ -13,15 +13,13 @@ class ArtistBloc extends Bloc<ArtistEvent, ArtistState> {
     on<ArtistEvent>((event, emit) async {
       emit(ArtistLoading());
       try {
-        final artistModel =await artistRepository.getArtistData();
+        final artistModel = await artistRepository.getArtistData();
         emit(ArtistLoaded(artistModel));
       } catch (e) {
-        if(e is Exception){
+        if (e is Exception) {
           emit(ArtistError(e.toString()));
-        }else{
-          emit(ArtistError(
-            'Something went wrong! ${e}'
-          ));
+        } else {
+          emit(ArtistError('Something went wrong! $e'));
         }
       }
     });

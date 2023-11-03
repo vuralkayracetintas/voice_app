@@ -32,7 +32,7 @@ class VoiceRepository {
 
     if (response.statusCode == 200) {
       final bytes = response.bodyBytes;
-      final fileName = 'output.mp3';
+      const fileName = 'output.mp3';
       final directory = await getApplicationDocumentsDirectory();
       final filePath = '${directory.path}/$fileName';
       File file = File(filePath);

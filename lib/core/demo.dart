@@ -1,18 +1,17 @@
-
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:just_audio/just_audio.dart';
 
-
-
 class DemoApp extends StatefulWidget {
+  const DemoApp({super.key});
+
   @override
-  _DemoAppState createState() => _DemoAppState();
+  DemoAppState createState() => DemoAppState();
 }
 
-class _DemoAppState extends State<DemoApp> {
-  TextEditingController _textFieldController = TextEditingController();
+class DemoAppState extends State<DemoApp> {
+  final TextEditingController _textFieldController = TextEditingController();
   final player = AudioPlayer();
   bool _isLoadingVoice = false;
   String selectedVoice = '21m00Tcm4TlvDq8ikWAM';
@@ -82,7 +81,7 @@ class _DemoAppState extends State<DemoApp> {
                   selectedVoice = newValue!;
                 });
               },
-              items: [
+              items: const [
                 DropdownMenuItem(
                   value: '21m00Tcm4TlvDq8ikWAM',
                   child: Text('Ses 1'),

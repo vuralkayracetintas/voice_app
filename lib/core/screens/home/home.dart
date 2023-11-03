@@ -9,7 +9,7 @@ import 'package:voice_app/product/model/artist_model.dart';
 import 'package:http/http.dart' as http;
 
 class Home extends StatefulWidget {
-  const Home({Key? key});
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -17,7 +17,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String selectedVoice = '21m00Tcm4TlvDq8ikWAM';
-  TextEditingController _textFieldController = TextEditingController();
+  final TextEditingController _textFieldController = TextEditingController();
   bool _isLoadingVoice = false;
   final player = AudioPlayer();
 
@@ -88,10 +88,10 @@ class _HomeState extends State<Home> {
             } else if (state is ArtistLoaded) {
               // API'den gelen ses kimliklerini içerir
               List<Voices> voiseList = state.artistModel.voices!;
-              List<String?> voiceIds =
-                  voiseList.map((voice) => voice.voiceId).toList();
-              List<String?> voiseArtistName =
-                  voiseList.map((voise) => voise.name).toList();
+              // List<String?> voiceIds =
+              //     voiseList.map((voice) => voice.voiceId).toList();
+              // List<String?> voiseArtistName =
+              //     voiseList.map((voise) => voise.name).toList();
 
               return RefreshIndicator(
                   onRefresh: () async {
@@ -140,9 +140,6 @@ class _HomeState extends State<Home> {
   }
 }
 
-
-
-
 /*
 ListView.builder(
                   itemCount: voiseList.length,
@@ -156,3 +153,17 @@ ListView.builder(
                   },
                 )
 */
+
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
+
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
