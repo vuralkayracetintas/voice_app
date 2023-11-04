@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kartal/kartal.dart';
+import 'package:voice_app/product/widgets/app_icon_widget.dart';
 import 'package:voice_app/product/widgets/custom_button.dart';
+import 'package:voice_app/product/widgets/custom_social_button.dart';
+import 'package:voice_app/product/widgets/signup_text_widget.dart';
 
 class SignInMail extends StatefulWidget {
   const SignInMail({super.key});
@@ -16,11 +19,18 @@ class _SignInMailState extends State<SignInMail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign In Mail'),
+        title: Text(
+          'Sign In',
+          style: context.general.textTheme.bodyLarge
+              ?.copyWith(color: Colors.white),
+        ),
+        backgroundColor: Colors.transparent,
       ),
       body: Center(
         child: Column(
           children: [
+            Spacer(),
+            const AppIconWidget(),
             Text(
               'Welcome Voice AI 👋🏻',
               style: context.general.textTheme.titleLarge?.copyWith(
@@ -35,35 +45,46 @@ class _SignInMailState extends State<SignInMail> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30))),
-                prefixIcon: Padding(
-                  padding: context.padding.horizontalMedium,
-                  child: SvgPicture.asset(
-                    'assets/svg/mail.svg',
-                    height: context.sized.height * 0.03,
-                    // color: color,
+            Spacer(),
+            SizedBox(
+              width: context.sized.width * 0.9,
+              child: TextFormField(
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30))),
+                  prefixIcon: Padding(
+                    padding: context.padding.horizontalMedium,
+                    child: SvgPicture.asset(
+                      'assets/svg/mail.svg',
+                      height: context.sized.height * 0.03,
+                      // color: color,
+                    ),
                   ),
+                  labelText: 'Email',
                 ),
-                labelText: 'Email',
               ),
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                suffixIcon: const Icon(Icons.visibility),
-                prefixIcon: Padding(
-                  padding: context.padding.horizontalMedium,
-                  child: SvgPicture.asset(
-                    'assets/svg/password.svg',
-                    height: context.sized.height * 0.03,
-                    // color: color,
+            SizedBox(
+              height: context.sized.height * 0.022,
+              // height: 21,
+            ),
+            SizedBox(
+              width: context.sized.width * 0.9,
+              child: TextFormField(
+                decoration: InputDecoration(
+                  suffixIcon: const Icon(Icons.visibility),
+                  prefixIcon: Padding(
+                    padding: context.padding.horizontalMedium,
+                    child: SvgPicture.asset(
+                      'assets/svg/password.svg',
+                      height: context.sized.height * 0.03,
+                      // color: color,
+                    ),
                   ),
+                  border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30))),
+                  labelText: 'Password',
                 ),
-                border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30))),
-                labelText: 'Password',
               ),
             ),
             Row(
@@ -95,11 +116,13 @@ class _SignInMailState extends State<SignInMail> {
                 ),
               ],
             ),
+            Spacer(),
             CustomButton(
               description: 'Sign In',
               backgroundColor: Color(0xff235dff),
               onPressed: () {},
             ),
+            Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -124,6 +147,25 @@ class _SignInMailState extends State<SignInMail> {
                 ),
               ],
             ),
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CustomSocialButton(
+                  backgroundColor: Color(0xff1A1E24),
+                  onPressed: () {},
+                  svgPath: 'assets/svg/google.svg',
+                ),
+                CustomSocialButton(
+                  backgroundColor: Color(0xff1A1E24),
+                  onPressed: () {},
+                  svgPath: 'assets/svg/apple.svg',
+                ),
+              ],
+            ),
+            Spacer(),
+            SignUpTextWidget(),
+            Spacer()
           ],
         ),
       ),

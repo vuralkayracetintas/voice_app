@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kartal/kartal.dart';
 import 'package:voice_app/product/widgets/app_icon_widget.dart';
 import 'package:voice_app/product/widgets/custom_button.dart';
+import 'package:voice_app/product/widgets/signup_text_widget.dart';
 
 class WelcomeLogin extends StatelessWidget {
   const WelcomeLogin({super.key});
@@ -27,7 +28,7 @@ class WelcomeLogin extends StatelessWidget {
             CustomButton(
               svgPath: 'assets/svg/google.svg',
               description: 'Continue with Google',
-              backgroundColor: Color(0xff1A1E24),
+              backgroundColor: const Color(0xff1A1E24),
               onPressed: () {},
             ),
             SizedBox(height: context.sized.height * 0.025),
@@ -35,7 +36,7 @@ class WelcomeLogin extends StatelessWidget {
               svgPath: 'assets/svg/apple.svg',
               description: 'Continue with Apple',
               svgColor: Colors.white,
-              backgroundColor: Color(0xff1A1E24),
+              backgroundColor: const Color(0xff1A1E24),
               onPressed: () {},
             ),
             const Spacer(),
@@ -43,25 +44,9 @@ class WelcomeLogin extends StatelessWidget {
             CustomButton(
               description: 'Sign In with Mail',
               // svgColor: Color(0xff235dff),
-              backgroundColor: Color(0xff235dff), onPressed: () {},
+              backgroundColor: const Color(0xff235dff), onPressed: () {},
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Don\'t have an Account ?',
-                    style: context.general.textTheme.titleSmall?.copyWith(
-                        color: const Color(0xffFFFFFF),
-                        fontWeight: FontWeight.bold)),
-                TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Sign Up',
-                      style: context.general.textTheme.titleSmall?.copyWith(
-                          color: const Color(0xff235dff),
-                          fontWeight: FontWeight.bold),
-                    ))
-              ],
-            ),
+            const SignUpTextWidget(),
             const Spacer()
           ],
         ),
