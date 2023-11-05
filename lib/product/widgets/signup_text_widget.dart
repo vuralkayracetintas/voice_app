@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_%20constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
 
@@ -18,7 +19,9 @@ class SignUpTextWidget extends StatelessWidget {
                 color: ColorConstants.colorsWhite,
                 fontWeight: FontWeight.bold)),
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              NavigationService.instance.navigateToPage(path: '/sign_up');
+            },
             child: Text(
               StringConstants.signUp,
               style: context.general.textTheme.titleSmall?.copyWith(

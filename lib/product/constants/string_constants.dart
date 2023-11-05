@@ -14,6 +14,7 @@ class StringConstants {
 
   static const String remember = 'Remember me';
   static const String password = 'Password';
+  static const String passwordAgain = StringConstants.password + ' Again';
   static const String email = 'Email';
   static const String enterMailDesc = 'Enter your Email & Password to Sign In';
 

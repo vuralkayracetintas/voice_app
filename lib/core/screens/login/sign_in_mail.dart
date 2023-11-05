@@ -18,6 +18,8 @@ class SignInMail extends StatefulWidget {
 
 class _SignInMailState extends State<SignInMail> {
   bool isChecked = false;
+  bool _passwordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +58,7 @@ class _SignInMailState extends State<SignInMail> {
               ),
             ),
             const Spacer(),
+            //mail textfield
             SizedBox(
               width: context.sized.width * 0.9,
               child: TextFormField(
@@ -78,11 +81,25 @@ class _SignInMailState extends State<SignInMail> {
               height: context.sized.height * 0.022,
               // height: 21,
             ),
+            //password textfield
             SizedBox(
               width: context.sized.width * 0.9,
               child: TextFormField(
+                obscureText: !_passwordVisible,
                 decoration: InputDecoration(
-                  suffixIcon: const Icon(Icons.visibility),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _passwordVisible = !_passwordVisible;
+                      });
+                    },
+                    icon: Icon(
+                      // Based on passwordVisible state choose the icon
+                      _passwordVisible
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                    ),
+                  ),
                   prefixIcon: Padding(
                     padding: context.padding.horizontalMedium,
                     child: SvgPicture.asset(

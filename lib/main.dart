@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.transparent)
               .copyWith(background: ColorConstants.appBackground),
         ),
-        // home: const SignInMail(),
+        // home: const MyHomePage(),
       ),
     );
   }
