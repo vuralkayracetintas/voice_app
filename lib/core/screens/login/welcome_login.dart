@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kartal/kartal.dart';
+import 'package:voice_app/core/navigation/navigation_service.dart';
+import 'package:voice_app/product/constants/color_%20constants.dart';
+import 'package:voice_app/product/constants/string_constants.dart';
 import 'package:voice_app/product/widgets/app_icon_widget.dart';
 import 'package:voice_app/product/widgets/custom_button.dart';
 import 'package:voice_app/product/widgets/signup_text_widget.dart';
@@ -11,7 +14,7 @@ class WelcomeLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff0D0F13),
+      // backgroundColor: const Color(0xff0D0F13),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -20,31 +23,34 @@ class WelcomeLogin extends StatelessWidget {
             const AppIconWidget(),
             SizedBox(height: context.sized.height * 0.025),
             Text(
-              'Welcome To Voice AI Let\'s Login with your account',
+              StringConstants.welcomeTitle,
               style: context.general.textTheme.titleSmall
-                  ?.copyWith(color: const Color(0xffece1e1)),
+                  ?.copyWith(color: ColorConstants.colorGrey2),
             ),
             const Spacer(),
             CustomButton(
-              svgPath: 'assets/svg/google.svg',
-              description: 'Continue with Google',
-              backgroundColor: const Color(0xff1A1E24),
+              svgPath: StringConstants.googleSVG,
+              description: StringConstants.continueGoogle,
+              backgroundColor: ColorConstants.darkBtnColor,
               onPressed: () {},
             ),
             SizedBox(height: context.sized.height * 0.025),
             CustomButton(
-              svgPath: 'assets/svg/apple.svg',
-              description: 'Continue with Apple',
+              svgPath: StringConstants.appleSVG,
+              description: StringConstants.continueApple,
               svgColor: Colors.white,
-              backgroundColor: const Color(0xff1A1E24),
+              backgroundColor: ColorConstants.darkBtnColor,
               onPressed: () {},
             ),
             const Spacer(),
-            const Divider(color: Color(0xff22262F)),
+            const Divider(color: ColorConstants.dividerColor),
             CustomButton(
-              description: 'Sign In with Mail',
-              // svgColor: Color(0xff235dff),
-              backgroundColor: const Color(0xff235dff), onPressed: () {},
+              description: StringConstants.signInMail,
+              backgroundColor: ColorConstants.colorBlue,
+              onPressed: () {
+                NavigationService.instance
+                    .navigateToPage(path: '/sign_in_mail');
+              },
             ),
             const SignUpTextWidget(),
             const Spacer()

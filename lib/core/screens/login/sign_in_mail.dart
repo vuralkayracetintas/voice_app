@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kartal/kartal.dart';
+import 'package:voice_app/core/navigation/navigation_service.dart';
+import 'package:voice_app/product/constants/color_%20constants.dart';
+import 'package:voice_app/product/constants/string_constants.dart';
 import 'package:voice_app/product/widgets/app_icon_widget.dart';
 import 'package:voice_app/product/widgets/custom_button.dart';
 import 'package:voice_app/product/widgets/custom_social_button.dart';
@@ -19,33 +22,40 @@ class _SignInMailState extends State<SignInMail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Sign In',
-          style: context.general.textTheme.bodyLarge
-              ?.copyWith(color: Colors.white),
+        leading: IconButton(
+          onPressed: () {
+            NavigationService.instance.navigateToBack();
+          },
+          icon: const Icon(Icons.arrow_back_ios),
+          color: ColorConstants.colorsWhite,
         ),
-        backgroundColor: Colors.transparent,
+        title: Text(
+          StringConstants.signIn,
+          style: context.general.textTheme.bodyLarge
+              ?.copyWith(color: ColorConstants.colorsWhite),
+        ),
+        backgroundColor: ColorConstants.transparent,
       ),
       body: Center(
         child: Column(
           children: [
-            Spacer(),
+            const Spacer(),
             const AppIconWidget(),
             Text(
-              'Welcome Voice AI 👋🏻',
+              StringConstants.welcomeApp,
               style: context.general.textTheme.titleLarge?.copyWith(
-                color: const Color(0xffFFFFFF),
+                color: ColorConstants.colorsWhite,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
-              'Enter your Email & Password to Sign In',
+              StringConstants.enterMailDesc,
               style: context.general.textTheme.titleSmall?.copyWith(
-                color: const Color(0xffFFFFFF),
+                color: ColorConstants.colorsWhite,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Spacer(),
+            const Spacer(),
             SizedBox(
               width: context.sized.width * 0.9,
               child: TextFormField(
@@ -55,12 +65,12 @@ class _SignInMailState extends State<SignInMail> {
                   prefixIcon: Padding(
                     padding: context.padding.horizontalMedium,
                     child: SvgPicture.asset(
-                      'assets/svg/mail.svg',
+                      StringConstants.mailSVG,
                       height: context.sized.height * 0.03,
                       // color: color,
                     ),
                   ),
-                  labelText: 'Email',
+                  labelText: StringConstants.email,
                 ),
               ),
             ),
@@ -76,14 +86,14 @@ class _SignInMailState extends State<SignInMail> {
                   prefixIcon: Padding(
                     padding: context.padding.horizontalMedium,
                     child: SvgPicture.asset(
-                      'assets/svg/password.svg',
+                      StringConstants.passwordSVH,
                       height: context.sized.height * 0.03,
                       // color: color,
                     ),
                   ),
                   border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30))),
-                  labelText: 'Password',
+                  labelText: StringConstants.password,
                 ),
               ),
             ),
@@ -99,7 +109,7 @@ class _SignInMailState extends State<SignInMail> {
                   },
                 ),
                 Text(
-                  'Remember me',
+                  StringConstants.remember,
                   style: context.general.textTheme.titleSmall?.copyWith(
                     color: const Color(0xffFFFFFF),
                   ),
@@ -108,64 +118,63 @@ class _SignInMailState extends State<SignInMail> {
                 TextButton(
                   onPressed: () {},
                   child: Text(
-                    'Forgot Password ?',
+                    StringConstants.forgetPass,
                     style: context.general.textTheme.titleSmall?.copyWith(
-                      color: const Color(0xff235dff),
+                      color: ColorConstants.colorBlue,
                     ),
                   ),
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             CustomButton(
-              description: 'Sign In',
-              backgroundColor: Color(0xff235dff),
+              description: StringConstants.signIn,
+              backgroundColor: ColorConstants.colorBlue,
               onPressed: () {},
             ),
-            Spacer(),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: 2, // Çizgi yüksekliğini ayarlayabilirsiniz
-                  width: context.sized.width *
-                      0.4, // Çizgi uzunluğunu ayarlayabilirsiniz
-                  color: Colors.white, // Çizgi rengini özelleştirebilirsiniz
-                  margin: const EdgeInsets.symmetric(
-                      horizontal:
-                          10), // Çizgi ile metinler arasındaki boşluğu ayarlayabilirsiniz
+                  height: 2,
+                  width: context.sized.width * 0.4,
+                  color: ColorConstants.colorsWhite,
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
                 ),
                 const Text(
                   'OR',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                    color: ColorConstants.colorsWhite,
+                  ),
                 ),
                 Container(
                   height: 2,
-                  width: context.sized.width * 0.4, // Çizgi uzunlu
-                  color: Colors.white,
+                  width: context.sized.width * 0.4,
+                  color: ColorConstants.colorsWhite,
                   margin: const EdgeInsets.symmetric(horizontal: 10),
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CustomSocialButton(
-                  backgroundColor: Color(0xff1A1E24),
+                  backgroundColor: ColorConstants.darkBtnColor,
                   onPressed: () {},
-                  svgPath: 'assets/svg/google.svg',
+                  svgPath: StringConstants.googleSVG,
                 ),
                 CustomSocialButton(
-                  backgroundColor: Color(0xff1A1E24),
+                  backgroundColor: ColorConstants.darkBtnColor,
                   onPressed: () {},
-                  svgPath: 'assets/svg/apple.svg',
+                  svgPath: StringConstants.appleSVG,
                 ),
               ],
             ),
-            Spacer(),
-            SignUpTextWidget(),
-            Spacer()
+            const Spacer(),
+            const SignUpTextWidget(),
+            const Spacer()
           ],
         ),
       ),

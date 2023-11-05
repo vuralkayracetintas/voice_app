@@ -2,10 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_app/bloc/VoiceBloc/voice_bloc.dart';
-import 'package:voice_app/core/screens/login/sign_in_mail.dart';
-import 'package:voice_app/core/screens/login/welcome_login.dart';
+import 'package:voice_app/core/navigation/navigation_route.dart';
+import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/firebase_options.dart';
-
+import 'package:voice_app/product/constants/color_%20constants.dart';
 import 'package:voice_app/product/repository/voice_repo.dart';
 
 Future<void> main() async {
@@ -24,13 +24,16 @@ class MyApp extends StatelessWidget {
     return RepositoryProvider(
       create: (context) => VoiceRepository(),
       child: MaterialApp(
-          // home: WelcomeLogin(),
-          theme: ThemeData(
-            useMaterial3: true,
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)
-                .copyWith(background: const Color(0xff0D0F13)),
-          ),
-          home: const SignInMail()),
+        // home: WelcomeLogin(),
+        navigatorKey: NavigationService.instance.navigatorKey,
+        onGenerateRoute: NavigationRoute.instance.generateRoute,
+        theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.transparent)
+              .copyWith(background: ColorConstants.appBackground),
+        ),
+        // home: const SignInMail(),
+      ),
     );
   }
 }

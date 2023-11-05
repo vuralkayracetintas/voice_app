@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:voice_app/product/constants/color_%20constants.dart';
+import 'package:voice_app/product/constants/string_constants.dart';
 
 class SignUpTextWidget extends StatelessWidget {
   const SignUpTextWidget({
@@ -11,15 +13,16 @@ class SignUpTextWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('Don\'t have an Account ?',
+        Text(StringConstants.dontAccount,
             style: context.general.textTheme.titleSmall?.copyWith(
-                color: const Color(0xffFFFFFF), fontWeight: FontWeight.bold)),
+                color: ColorConstants.colorsWhite,
+                fontWeight: FontWeight.bold)),
         TextButton(
             onPressed: () {},
             child: Text(
-              'Sign Up',
+              StringConstants.signUp,
               style: context.general.textTheme.titleSmall?.copyWith(
-                  color: const Color(0xff235dff), fontWeight: FontWeight.bold),
+                  color: ColorConstants.colorBlue, fontWeight: FontWeight.bold),
             ))
       ],
     );
