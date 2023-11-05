@@ -28,8 +28,14 @@ class MyApp extends StatelessWidget {
         navigatorKey: NavigationService.instance.navigatorKey,
         onGenerateRoute: NavigationRoute.instance.generateRoute,
         theme: ThemeData(
+          scaffoldBackgroundColor: ColorConstants.appBackground,
+          appBarTheme: const AppBarTheme(
+            color: ColorConstants.transparent,
+          ),
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.transparent)
+          colorScheme: ColorScheme.fromSeed(
+                  background: Colors.white,
+                  seedColor: ColorConstants.colorsWhite)
               .copyWith(background: ColorConstants.appBackground),
         ),
         // home: const MyHomePage(),

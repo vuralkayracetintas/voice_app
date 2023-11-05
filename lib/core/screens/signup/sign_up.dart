@@ -7,6 +7,8 @@ import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_%20constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
 import 'package:voice_app/product/widgets/custom_button.dart';
+import 'package:voice_app/product/widgets/custom_textfield_mail.dart';
+import 'package:voice_app/product/widgets/custom_textfield_password.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -16,8 +18,8 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  bool _passwordVisible = false;
-  bool _passwordAgainVisible = false;
+  final bool _passwordVisible = false;
+  final bool _passwordAgainVisible = false;
 
   @override
   void initState() {
@@ -43,35 +45,7 @@ class _SignUpState extends State<SignUp> {
             // mail textfield
             SizedBox(
               width: context.sized.width * 0.9,
-              child: TextFormField(
-                style: context.general.textTheme.titleMedium?.copyWith(
-                  color: ColorConstants.colorsWhite,
-                ),
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  focusedBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    borderSide: BorderSide(
-                      color: Colors.grey,
-                    ),
-                  ),
-                  enabledBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    borderSide: BorderSide(
-                      color: Colors.grey,
-                    ),
-                  ),
-                  prefixIcon: Padding(
-                    padding: context.padding.horizontalMedium,
-                    child: SvgPicture.asset(
-                      StringConstants.mailSVG,
-                      height: context.sized.height * 0.03,
-                      // color: color,
-                    ),
-                  ),
-                  labelText: StringConstants.email,
-                ),
-              ),
+              child: const CustomTextFormFieldMail(),
             ),
             SizedBox(
               height: context.sized.height * 0.022,
@@ -80,41 +54,8 @@ class _SignUpState extends State<SignUp> {
             //password textfiled
             SizedBox(
               width: context.sized.width * 0.9,
-              child: TextFormField(
-                keyboardType: TextInputType.visiblePassword,
-                style: context.general.textTheme.titleMedium?.copyWith(
-                  color: ColorConstants.colorsWhite,
-                ),
-                obscureText: !_passwordVisible,
-                decoration: InputDecoration(
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _passwordVisible = !_passwordVisible;
-                      });
-                    },
-                    icon: Icon(
-                      // Based on passwordVisible state choose the icon
-                      _passwordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                    ),
-                  ),
-                  prefixIcon: Padding(
-                    padding: context.padding.horizontalMedium,
-                    child: SvgPicture.asset(
-                      StringConstants.passwordSVH,
-                      height: context.sized.height * 0.03,
-                      // color: color,
-                    ),
-                  ),
-                  border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(30),
-                    ),
-                  ),
-                  labelText: StringConstants.password,
-                ),
+              child: CustomTextFieldPassword(
+                passwordVisible: _passwordVisible,
               ),
             ),
             SizedBox(
@@ -124,38 +65,8 @@ class _SignUpState extends State<SignUp> {
             // password again textfield
             SizedBox(
               width: context.sized.width * 0.9,
-              child: TextFormField(
-                keyboardType: TextInputType.visiblePassword,
-                style: context.general.textTheme.titleMedium?.copyWith(
-                  color: ColorConstants.colorsWhite,
-                ),
-                obscureText: !_passwordAgainVisible,
-                decoration: InputDecoration(
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _passwordAgainVisible = !_passwordAgainVisible;
-                      });
-                    },
-                    icon: Icon(
-                      // Based on passwordVisible state choose the icon
-                      _passwordAgainVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                    ),
-                  ),
-                  prefixIcon: Padding(
-                    padding: context.padding.horizontalMedium,
-                    child: SvgPicture.asset(
-                      StringConstants.passwordSVH,
-                      height: context.sized.height * 0.03,
-                      // color: color,
-                    ),
-                  ),
-                  border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(30))),
-                  labelText: StringConstants.passwordAgain,
-                ),
+              child: CustomTextFieldPassword(
+                passwordVisible: _passwordAgainVisible,
               ),
             ),
             SizedBox(

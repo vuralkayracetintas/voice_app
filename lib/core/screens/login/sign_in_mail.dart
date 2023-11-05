@@ -23,6 +23,7 @@ class _SignInMailState extends State<SignInMail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: const Color(0xff0D0F13),
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
@@ -36,7 +37,7 @@ class _SignInMailState extends State<SignInMail> {
           style: context.general.textTheme.bodyLarge
               ?.copyWith(color: ColorConstants.colorsWhite),
         ),
-        backgroundColor: ColorConstants.transparent,
+        // backgroundColor: ColorConstants.transparent,
       ),
       body: Center(
         child: Column(
