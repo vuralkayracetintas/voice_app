@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:voice_app/core/navigation/navigation_service.dart';
-import 'package:voice_app/product/constants/color_%20constants.dart';
+import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
 
 class SignUpTextWidget extends StatelessWidget {

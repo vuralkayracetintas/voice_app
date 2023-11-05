@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:kartal/kartal.dart';
 import 'package:voice_app/core/navigation/navigation_service.dart';
-import 'package:voice_app/product/constants/color_%20constants.dart';
+import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
 import 'package:voice_app/product/widgets/app_icon_widget.dart';
 import 'package:voice_app/product/widgets/custom_button.dart';
 import 'package:voice_app/product/widgets/custom_social_button.dart';
+import 'package:voice_app/product/widgets/custom_textfield_mail.dart';
+import 'package:voice_app/product/widgets/custom_textfield_password.dart';
 import 'package:voice_app/product/widgets/signup_text_widget.dart';
 
 class SignInMail extends StatefulWidget {
@@ -18,7 +20,7 @@ class SignInMail extends StatefulWidget {
 
 class _SignInMailState extends State<SignInMail> {
   bool isChecked = false;
-  bool _passwordVisible = false;
+  final bool _passwordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -62,21 +64,22 @@ class _SignInMailState extends State<SignInMail> {
             //mail textfield
             SizedBox(
               width: context.sized.width * 0.9,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(30))),
-                  prefixIcon: Padding(
-                    padding: context.padding.horizontalMedium,
-                    child: SvgPicture.asset(
-                      StringConstants.mailSVG,
-                      height: context.sized.height * 0.03,
-                      // color: color,
-                    ),
-                  ),
-                  labelText: StringConstants.email,
-                ),
-              ),
+              child: const CustomTextFormFieldMail(),
+              // child: TextFormField(
+              //   decoration: InputDecoration(
+              //     border: const OutlineInputBorder(
+              //         borderRadius: BorderRadius.all(Radius.circular(30))),
+              //     prefixIcon: Padding(
+              //       padding: context.padding.horizontalMedium,
+              //       child: SvgPicture.asset(
+              //         StringConstants.mailSVG,
+              //         height: context.sized.height * 0.03,
+              //         // color: color,
+              //       ),
+              //     ),
+              //     labelText: StringConstants.email,
+              //   ),
+              // ),
             ),
             SizedBox(
               height: context.sized.height * 0.022,
@@ -85,35 +88,36 @@ class _SignInMailState extends State<SignInMail> {
             //password textfield
             SizedBox(
               width: context.sized.width * 0.9,
-              child: TextFormField(
-                obscureText: !_passwordVisible,
-                decoration: InputDecoration(
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _passwordVisible = !_passwordVisible;
-                      });
-                    },
-                    icon: Icon(
-                      // Based on passwordVisible state choose the icon
-                      _passwordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                    ),
-                  ),
-                  prefixIcon: Padding(
-                    padding: context.padding.horizontalMedium,
-                    child: SvgPicture.asset(
-                      StringConstants.passwordSVH,
-                      height: context.sized.height * 0.03,
-                      // color: color,
-                    ),
-                  ),
-                  border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(30))),
-                  labelText: StringConstants.password,
-                ),
-              ),
+              child: CustomTextFieldPassword(passwordVisible: _passwordVisible),
+              // child: TextFormField(
+              //   obscureText: !_passwordVisible,
+              //   decoration: InputDecoration(
+              //     suffixIcon: IconButton(
+              //       onPressed: () {
+              //         setState(() {
+              //           _passwordVisible = !_passwordVisible;
+              //         });
+              //       },
+              //       icon: Icon(
+              //         // Based on passwordVisible state choose the icon
+              //         _passwordVisible
+              //             ? Icons.visibility
+              //             : Icons.visibility_off,
+              //       ),
+              //     ),
+              //     prefixIcon: Padding(
+              //       padding: context.padding.horizontalMedium,
+              //       child: SvgPicture.asset(
+              //         StringConstants.passwordSVH,
+              //         height: context.sized.height * 0.03,
+              //         // color: color,
+              //       ),
+              //     ),
+              //     border: const OutlineInputBorder(
+              //         borderRadius: BorderRadius.all(Radius.circular(30))),
+              //     labelText: StringConstants.password,
+              //   ),
+              // ),
             ),
             Row(
               children: [
