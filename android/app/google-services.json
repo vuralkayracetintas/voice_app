@@ -12,7 +12,20 @@
           "package_name": "com.example.voice_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "578658308946-mgk3u15oa00hs51ivki8ikiul4e4a81p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.voice_app",
+            "certificate_hash": "57faf54e4a8fe7bc8baa3d6cc482d4154b9bc783"
+          }
+        },
+        {
+          "client_id": "578658308946-pm3ngli8qdanp6ouqrtdr00vpbt2eea1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB3uFeUOqVmdWKru7_XqONujDDLxFu8Dww"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "578658308946-pm3ngli8qdanp6ouqrtdr00vpbt2eea1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "578658308946-dek4l0288on79tp31vlvtfn15mcarto6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.voiceApp"
+              }
+            }
+          ]
         }
       }
     }

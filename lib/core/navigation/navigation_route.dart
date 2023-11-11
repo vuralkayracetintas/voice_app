@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:voice_app/core/screens/login/sign_in_mail.dart';
 import 'package:voice_app/core/screens/login/welcome_login.dart';
 import 'package:voice_app/core/screens/signup/sign_up.dart';
+import 'package:voice_app/main.dart';
 
 class NavigationRoute {
   NavigationRoute._init();
@@ -17,6 +18,9 @@ class NavigationRoute {
 
       case '/sign_up':
         return MaterialPageRoute(builder: (context) => const SignUp());
+
+      case '/home':
+        return MaterialPageRoute(builder: (context) => MyHomePage());
       default:
         return MaterialPageRoute(
           builder: (BuildContext context) => Container(),
