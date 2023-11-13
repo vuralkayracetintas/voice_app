@@ -21,6 +21,8 @@ class _CustomTextFieldPasswordState extends State<CustomTextFieldPassword> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      cursorColor: Colors.white,
+      cursorWidth: 1,
       keyboardType: TextInputType.visiblePassword,
       style: context.general.textTheme.titleMedium?.copyWith(
         color: ColorConstants.colorsWhite,
@@ -34,8 +36,8 @@ class _CustomTextFieldPasswordState extends State<CustomTextFieldPassword> {
             });
           },
           icon: Icon(
-            // Based on passwordVisible state choose the icon
             widget.passwordVisible ? Icons.visibility : Icons.visibility_off,
+            color: ColorConstants.colorsWhite,
           ),
         ),
         prefixIcon: Padding(
@@ -46,12 +48,22 @@ class _CustomTextFieldPasswordState extends State<CustomTextFieldPassword> {
             // color: color,
           ),
         ),
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(30),
+        focusedBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(30)),
+          borderSide: BorderSide(
+            color: Colors.grey,
+          ),
+        ),
+        enabledBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(30)),
+          borderSide: BorderSide(
+            color: Colors.grey,
           ),
         ),
         labelText: StringConstants.password,
+        labelStyle: context.general.textTheme.titleMedium?.copyWith(
+          color: ColorConstants.colorsWhite,
+        ),
       ),
     );
   }

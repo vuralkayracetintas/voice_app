@@ -7,6 +7,7 @@ import 'package:voice_app/core/navigation/navigation_route.dart';
 import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/firebase_options.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
+import 'package:voice_app/product/repository/auth/login_repository.dart';
 import 'package:voice_app/product/repository/voice_repo.dart';
 
 Future<void> main() async {
@@ -22,8 +23,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => VoiceRepository(),
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<VoiceRepository>(
+          create: (context) => VoiceRepository(),
+        ),
+        RepositoryProvider<LoginRepository>(
+          create: (context) => LoginRepository(),
+        )
+      ],
       child: MaterialApp(
         navigatorKey: NavigationService.instance.navigatorKey,
         onGenerateRoute: NavigationRoute.instance.generateRoute,
