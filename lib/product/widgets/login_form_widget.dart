@@ -16,6 +16,7 @@ class LoginFormWidget extends StatelessWidget {
     return Form(
       key: _formKey,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(
             width: context.sized.width * 0.9,
@@ -25,6 +26,7 @@ class LoginFormWidget extends StatelessWidget {
             height: context.sized.height * 0.022,
             // height: 21,
           ),
+
           //password textfielda
           SizedBox(
             width: context.sized.width * 0.9,

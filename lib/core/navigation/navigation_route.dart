@@ -20,7 +20,7 @@ class NavigationRoute {
         return MaterialPageRoute(builder: (context) => const SignUp());
 
       case '/home':
-        return MaterialPageRoute(builder: (context) => MyHomePage());
+        return MaterialPageRoute(builder: (context) => const MyHomePage());
       default:
         return MaterialPageRoute(
           builder: (BuildContext context) => Container(),
