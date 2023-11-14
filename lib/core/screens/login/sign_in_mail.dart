@@ -8,15 +8,15 @@ import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
 import 'package:voice_app/product/repository/auth/auth_repository.dart';
-import 'package:voice_app/product/widgets/app_icon_widget.dart';
-import 'package:voice_app/product/widgets/custom_button.dart';
-import 'package:voice_app/product/widgets/custom_textfield_mail.dart';
-import 'package:voice_app/product/widgets/custom_textfield_password.dart';
+import 'package:voice_app/product/widgets/icon/app_icon_widget.dart';
+import 'package:voice_app/product/widgets/buttons/custom_button.dart';
+import 'package:voice_app/product/widgets/textfields/custom_textfield_mail.dart';
+import 'package:voice_app/product/widgets/textfields/custom_textfield_password.dart';
 import 'package:voice_app/product/widgets/divider_or_widget.dart';
 import 'package:voice_app/product/widgets/login_form_widget.dart';
 import 'package:voice_app/product/widgets/remember_forget_password_widget.dart';
 import 'package:voice_app/product/widgets/signup_text_widget.dart';
-import 'package:voice_app/product/widgets/social_button_widgets.dart';
+import 'package:voice_app/product/widgets/buttons/social_button_widgets.dart';
 
 class SignInMail extends StatefulWidget {
   const SignInMail({super.key});
@@ -55,6 +55,9 @@ class _SignInMailState extends State<SignInMail> {
             final formStatus = state.formStatus;
             if (formStatus is SubmissionFailed) {
               _showSnackbar(context, formStatus.exception.toString());
+            }
+            if (formStatus is SubmissionSucces) {
+              NavigationService.instance.navigateToPageRemoveAll(path: '/home');
             }
           },
           child: Center(

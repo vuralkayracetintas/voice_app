@@ -6,8 +6,8 @@ import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
 import 'package:voice_app/product/service/auth_service.dart';
-import 'package:voice_app/product/widgets/app_icon_widget.dart';
-import 'package:voice_app/product/widgets/custom_button.dart';
+import 'package:voice_app/product/widgets/icon/app_icon_widget.dart';
+import 'package:voice_app/product/widgets/buttons/custom_button.dart';
 import 'package:voice_app/product/widgets/signup_text_widget.dart';
 
 class WelcomeLogin extends StatelessWidget {

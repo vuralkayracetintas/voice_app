@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
-import 'package:voice_app/product/widgets/custom_button.dart';
-import 'package:voice_app/product/widgets/custom_textfield_mail.dart';
-import 'package:voice_app/product/widgets/custom_textfield_password.dart';
+import 'package:voice_app/product/widgets/buttons/custom_button.dart';
+import 'package:voice_app/product/widgets/textfields/custom_textfield_mail.dart';
+import 'package:voice_app/product/widgets/textfields/custom_textfield_password.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});

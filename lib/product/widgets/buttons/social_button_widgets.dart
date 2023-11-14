@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
-import 'package:voice_app/product/widgets/custom_social_button.dart';
+import 'package:voice_app/product/widgets/buttons/custom_social_button.dart';
 
 class SocialLoginButtonWidgets extends StatelessWidget {
   const SocialLoginButtonWidgets({
