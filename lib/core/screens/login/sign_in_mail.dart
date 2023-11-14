@@ -9,8 +9,12 @@ import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
 import 'package:voice_app/product/repository/auth/login_repository.dart';
 import 'package:voice_app/product/widgets/app_icon_widget.dart';
+import 'package:voice_app/product/widgets/custom_button.dart';
+import 'package:voice_app/product/widgets/custom_textfield_mail.dart';
+import 'package:voice_app/product/widgets/custom_textfield_password.dart';
 import 'package:voice_app/product/widgets/divider_or_widget.dart';
 import 'package:voice_app/product/widgets/login_form_widget.dart';
+import 'package:voice_app/product/widgets/remember_forget_password_widget.dart';
 import 'package:voice_app/product/widgets/signup_text_widget.dart';
 import 'package:voice_app/product/widgets/social_button_widgets.dart';
 
@@ -22,6 +26,8 @@ class SignInMail extends StatefulWidget {
 }
 
 class _SignInMailState extends State<SignInMail> {
+  final bool _passwordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +79,7 @@ class _SignInMailState extends State<SignInMail> {
                 ),
                 const Spacer(),
                 //mail textfield
-                // Expanded(child: LoginFormWidget()),
+                LoginFormWidget(),
                 const Spacer(),
                 const DividerOrWidget(),
                 const Spacer(),

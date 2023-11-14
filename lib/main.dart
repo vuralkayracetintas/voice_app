@@ -5,6 +5,7 @@ import 'package:voice_app/bloc/VoiceBloc/voice_bloc.dart';
 
 import 'package:voice_app/core/navigation/navigation_route.dart';
 import 'package:voice_app/core/navigation/navigation_service.dart';
+
 import 'package:voice_app/firebase_options.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/repository/auth/login_repository.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         navigatorKey: NavigationService.instance.navigatorKey,
         onGenerateRoute: NavigationRoute.instance.generateRoute,
+
         theme: ThemeData(
           scaffoldBackgroundColor: ColorConstants.appBackground,
           appBarTheme: const AppBarTheme(

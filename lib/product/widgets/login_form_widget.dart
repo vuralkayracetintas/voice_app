@@ -16,6 +16,7 @@ class LoginFormWidget extends StatelessWidget {
     return Form(
       key: _formKey,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(
@@ -33,7 +34,7 @@ class LoginFormWidget extends StatelessWidget {
             child: CustomTextFieldPassword(passwordVisible: _passwordVisible),
           ),
           RememberForgetPasswordWidget(),
-          const Spacer(),
+          // const Spacer(),
           CustomButton(
             description: StringConstants.signIn,
             backgroundColor: ColorConstants.colorBlue,

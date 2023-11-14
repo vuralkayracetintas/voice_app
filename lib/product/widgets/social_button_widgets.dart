@@ -10,22 +10,18 @@ class SocialLoginButtonWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            CustomSocialButton(
-              backgroundColor: ColorConstants.darkBtnColor,
-              onPressed: () {},
-              svgPath: StringConstants.googleSVG,
-            ),
-            CustomSocialButton(
-              backgroundColor: ColorConstants.darkBtnColor,
-              onPressed: () {},
-              svgPath: StringConstants.appleSVG,
-            ),
-          ],
+        CustomSocialButton(
+          backgroundColor: ColorConstants.darkBtnColor,
+          onPressed: () {},
+          svgPath: StringConstants.googleSVG,
+        ),
+        CustomSocialButton(
+          backgroundColor: ColorConstants.darkBtnColor,
+          onPressed: () {},
+          svgPath: StringConstants.appleSVG,
         ),
       ],
     );
