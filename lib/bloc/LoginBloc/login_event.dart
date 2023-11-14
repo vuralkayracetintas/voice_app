@@ -4,10 +4,10 @@ abstract class LoginEvent extends Equatable {
   const LoginEvent();
 }
 
-class LoginUsermailChanged extends LoginEvent {
+class LoginUserMailChanged extends LoginEvent {
   final String userMail;
 
-  const LoginUsermailChanged(this.userMail);
+  const LoginUserMailChanged(this.userMail);
   @override
   List<Object?> get props => [userMail];
 }
