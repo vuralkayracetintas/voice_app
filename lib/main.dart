@@ -8,7 +8,7 @@ import 'package:voice_app/core/navigation/navigation_service.dart';
 
 import 'package:voice_app/firebase_options.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
-import 'package:voice_app/product/repository/auth/login_repository.dart';
+import 'package:voice_app/product/repository/auth/auth_repository.dart';
 import 'package:voice_app/product/repository/voice_repo.dart';
 
 Future<void> main() async {
@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
         RepositoryProvider<VoiceRepository>(
           create: (context) => VoiceRepository(),
         ),
-        RepositoryProvider<LoginRepository>(
-          create: (context) => LoginRepository(),
+        RepositoryProvider<AuthRepository>(
+          create: (context) => AuthRepository(),
         )
       ],
       child: MaterialApp(

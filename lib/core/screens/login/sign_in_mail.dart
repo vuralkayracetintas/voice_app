@@ -7,7 +7,7 @@ import 'package:voice_app/bloc/form_submission_status.dart';
 import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
-import 'package:voice_app/product/repository/auth/login_repository.dart';
+import 'package:voice_app/product/repository/auth/auth_repository.dart';
 import 'package:voice_app/product/widgets/app_icon_widget.dart';
 import 'package:voice_app/product/widgets/custom_button.dart';
 import 'package:voice_app/product/widgets/custom_textfield_mail.dart';
@@ -47,7 +47,7 @@ class _SignInMailState extends State<SignInMail> {
         ),
       ),
       body: BlocProvider(
-        create: (context) => LoginBloc(context.read<LoginRepository>()),
+        create: (context) => LoginBloc(context.read<AuthRepository>()),
         child: BlocListener<LoginBloc, LoginState>(
           listenWhen: (((previous, current) =>
               previous.formStatus != current.formStatus)),

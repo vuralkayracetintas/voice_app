@@ -8,7 +8,9 @@ class InitialFormStatus extends FormSubmissionStatus {
 
 class FormSubmitting extends FormSubmissionStatus {}
 
-class SubmissionSucces extends FormSubmissionStatus {}
+class SubmissionSucces extends FormSubmissionStatus {
+  const SubmissionSucces();
+}
 
 class SubmissionFailed extends FormSubmissionStatus {
   final Object exception;

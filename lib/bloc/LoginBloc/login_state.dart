@@ -7,10 +7,11 @@ class LoginState extends Equatable {
     this.formStatus = const InitialFormStatus(),
   });
 
-  LoginState copyWrite(
-      {String? userMail,
-      String? userPassword,
-      FormSubmissionStatus? formStatus}) {
+  LoginState copyWith({
+    String? userMail,
+    String? userPassword,
+    FormSubmissionStatus? formStatus,
+  }) {
     return LoginState(
       userMail: userMail ?? this.userMail,
       userPassword: userPassword ?? this.userPassword,
@@ -26,8 +27,4 @@ class LoginState extends Equatable {
 
   @override
   List<Object> get props => [userMail, userPassword, formStatus];
-}
-
-class LoginInitial extends LoginState {
-  const LoginInitial();
 }
