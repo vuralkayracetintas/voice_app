@@ -1,7 +1,9 @@
-class AuthRepository {
-  Future signInWithEmail() async {
-    await Future.delayed(const Duration(seconds: 2));
+import 'package:voice_app/product/service/auth_service.dart';
 
-    throw Exception('Login Repo Error');
+class AuthRepository {
+  const AuthRepository({required this.service});
+  final AuthServices service;
+  Future signInWithEmail({required String email, required String password}) {
+    return service.signInWithEmail(email: email, password: password);
   }
 }

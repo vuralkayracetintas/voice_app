@@ -10,6 +10,7 @@ import 'package:voice_app/firebase_options.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/repository/auth/auth_repository.dart';
 import 'package:voice_app/product/repository/voice_repo.dart';
+import 'package:voice_app/product/service/auth_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
           create: (context) => VoiceRepository(),
         ),
         RepositoryProvider<AuthRepository>(
-          create: (context) => AuthRepository(),
+          create: (context) => AuthRepository(service: AuthServices()),
         )
       ],
       child: MaterialApp(
