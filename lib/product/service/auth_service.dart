@@ -78,4 +78,11 @@ class AuthServices {
         email: email, password: password);
     return user.user;
   }
+
+  Future<User?> signUpWithEmail(
+      {required String email, required String password}) async {
+    final UserCredential user = await _auth.createUserWithEmailAndPassword(
+        email: email, password: password);
+    return user.user;
+  }
 }

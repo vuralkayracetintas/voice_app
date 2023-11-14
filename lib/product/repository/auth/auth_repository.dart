@@ -6,4 +6,9 @@ class AuthRepository {
   Future signInWithEmail({required String email, required String password}) {
     return service.signInWithEmail(email: email, password: password);
   }
+
+  Future signUpWithEmail(
+      {required String email, required String password}) async {
+    return service.signUpWithEmail(email: email, password: password);
+  }
 }
