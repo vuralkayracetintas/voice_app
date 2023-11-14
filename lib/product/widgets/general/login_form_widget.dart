@@ -6,7 +6,7 @@ import 'package:voice_app/product/widgets/buttons/custom_button.dart';
 import 'package:voice_app/product/widgets/textfields/custom_textfield_mail.dart';
 import 'package:voice_app/product/widgets/textfields/custom_textfield_password.dart';
 import 'package:voice_app/product/widgets/buttons/login_button.dart';
-import 'package:voice_app/product/widgets/remember_forget_password_widget.dart';
+import 'package:voice_app/product/widgets/general/remember_forget_password_widget.dart';
 
 class LoginFormWidget extends StatelessWidget {
   LoginFormWidget({super.key});

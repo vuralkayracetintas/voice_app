@@ -8,7 +8,7 @@ import 'package:voice_app/product/constants/string_constants.dart';
 import 'package:voice_app/product/service/auth_service.dart';
 import 'package:voice_app/product/widgets/icon/app_icon_widget.dart';
 import 'package:voice_app/product/widgets/buttons/custom_button.dart';
-import 'package:voice_app/product/widgets/signup_text_widget.dart';
+import 'package:voice_app/product/widgets/text/signup_text_widget.dart';
 
 class WelcomeLogin extends StatelessWidget {
   const WelcomeLogin({super.key});
