@@ -7,8 +7,8 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final AuthRepository authRepo;
-  LoginBloc(this.authRepo) : super(const LoginState()) {
+  final AuthRepository? authRepo;
+  LoginBloc({this.authRepo}) : super(const LoginState()) {
     on<LoginEvent>((event, emit) async {
       await mapEventToState(event, emit);
     });
@@ -22,7 +22,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     } else if (event is LoginSubmitted) {
       emit(state.copyWith(formStatus: FormSubmitting()));
       try {
-        await authRepo.signInWithEmail(
+        await authRepo?.signInWithEmail(
             email: state.userMail, password: state.userPassword);
         emit(state.copyWith(formStatus: SubmissionSuccess()));
       } catch (e) {

@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:voice_app/bloc/LoginBloc/login_bloc.dart';
+import 'package:voice_app/bloc/RegisterBloc/register_bloc.dart';
 import 'package:voice_app/bloc/VoiceBloc/voice_bloc.dart';
 
 import 'package:voice_app/core/navigation/navigation_route.dart';
@@ -9,6 +11,7 @@ import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/firebase_options.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/repository/auth/auth_repository.dart';
+import 'package:voice_app/product/repository/auth/repository_store.dart';
 import 'package:voice_app/product/repository/voice_repo.dart';
 import 'package:voice_app/product/service/auth_service.dart';
 
@@ -30,9 +33,15 @@ class MyApp extends StatelessWidget {
         RepositoryProvider<VoiceRepository>(
           create: (context) => VoiceRepository(),
         ),
-        RepositoryProvider<AuthRepository>(
-          create: (context) => AuthRepository(service: AuthServices()),
-        )
+        // RepositoryProvider<AuthRepository>(
+        //   create: (context) => AuthRepository(service: AuthServices()),
+        // ),
+        RepositoryProvider<LoginBloc>(
+            create: (context) =>
+                LoginBloc(authRepo: RepositoryStore.authRepository)),
+        RepositoryProvider<RegisterBloc>(
+            create: (context) =>
+                RegisterBloc(authRepo: RepositoryStore.authRepository))
       ],
       child: MaterialApp(
         navigatorKey: NavigationService.instance.navigatorKey,

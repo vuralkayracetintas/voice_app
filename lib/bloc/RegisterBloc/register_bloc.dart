@@ -8,7 +8,7 @@ part 'register_state.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   final AuthRepository? authRepo;
-  RegisterBloc(this.authRepo) : super(const RegisterState()) {
+  RegisterBloc({this.authRepo}) : super(const RegisterState()) {
     on<RegisterEvent>((event, emit) {});
   }
   Future mapEventToState(
