@@ -4,16 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_app/bloc/LoginBloc/login_bloc.dart';
 import 'package:voice_app/bloc/RegisterBloc/register_bloc.dart';
 import 'package:voice_app/bloc/VoiceBloc/voice_bloc.dart';
-
 import 'package:voice_app/core/navigation/navigation_route.dart';
 import 'package:voice_app/core/navigation/navigation_service.dart';
-
 import 'package:voice_app/firebase_options.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
-import 'package:voice_app/product/repository/auth/auth_repository.dart';
 import 'package:voice_app/product/repository/auth/repository_store.dart';
 import 'package:voice_app/product/repository/voice_repo.dart';
-import 'package:voice_app/product/service/auth_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

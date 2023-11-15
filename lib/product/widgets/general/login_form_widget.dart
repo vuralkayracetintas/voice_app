@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
-import 'package:voice_app/product/widgets/buttons/custom_button.dart';
 import 'package:voice_app/product/widgets/textfields/custom_textfield_mail.dart';
 import 'package:voice_app/product/widgets/textfields/custom_textfield_password.dart';
 import 'package:voice_app/product/widgets/buttons/login_button.dart';
@@ -34,7 +33,7 @@ class LoginFormWidget extends StatelessWidget {
             width: context.sized.width * 0.9,
             child: CustomTextFieldPassword(passwordVisible: _passwordVisible),
           ),
-          RememberForgetPasswordWidget(),
+          const RememberForgetPasswordWidget(),
           // const Spacer(),
           LoginButton(
             description: StringConstants.signIn,

@@ -4,7 +4,7 @@ import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
 
 class RememberForgetPasswordWidget extends StatefulWidget {
-  RememberForgetPasswordWidget({
+  const RememberForgetPasswordWidget({
     super.key,
   });
 
