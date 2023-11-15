@@ -35,48 +35,48 @@ class _SignUpState extends State<SignUp> {
         ),
         backgroundColor: Colors.transparent,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            // mail textfield
-            SizedBox(
-              width: context.sized.width * 0.9,
-              child: const CustomTextFormFieldMail(),
-            ),
-            SizedBox(
-              height: context.sized.height * 0.022,
-              // height: 21,
-            ),
-            //password textfiled
-            SizedBox(
-              width: context.sized.width * 0.9,
-              child: CustomTextFieldPassword(
-                passwordVisible: _passwordVisible,
-              ),
-            ),
-            SizedBox(
-              height: context.sized.height * 0.022,
-              // height: 21,
-            ),
-            // password again textfield
-            SizedBox(
-              width: context.sized.width * 0.9,
-              child: CustomTextFieldPassword(
-                passwordVisible: _passwordAgainVisible,
-              ),
-            ),
-            SizedBox(
-              height: context.sized.height * 0.022,
-              // height: 21,
-            ),
-            CustomButton(
-              description: 'Sign Up',
-              backgroundColor: ColorConstants.colorBlue,
-              onPressed: () {},
-            )
-          ],
-        ),
-      ),
+      // body: Center(
+      //   child: Column(
+      //     children: [
+      //       // mail textfield
+      //       SizedBox(
+      //         width: context.sized.width * 0.9,
+      //         child: const CustomTextFormFieldMail(),
+      //       ),
+      //       SizedBox(
+      //         height: context.sized.height * 0.022,
+      //         // height: 21,
+      //       ),
+      //       //password textfiled
+      //       SizedBox(
+      //         width: context.sized.width * 0.9,
+      //         child: CustomTextFieldPassword(
+      //           passwordVisible: _passwordVisible,
+      //         ),
+      //       ),
+      //       SizedBox(
+      //         height: context.sized.height * 0.022,
+      //         // height: 21,
+      //       ),
+      //       // password again textfield
+      //       SizedBox(
+      //         width: context.sized.width * 0.9,
+      //         child: CustomTextFieldPassword(
+      //           passwordVisible: _passwordAgainVisible,
+      //         ),
+      //       ),
+      //       SizedBox(
+      //         height: context.sized.height * 0.022,
+      //         // height: 21,
+      //       ),
+      //       CustomButton(
+      //         description: 'Sign Up',
+      //         backgroundColor: ColorConstants.colorBlue,
+      //         onPressed: () {},
+      //       )
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

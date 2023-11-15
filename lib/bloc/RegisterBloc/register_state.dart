@@ -1,10 +1,32 @@
 part of 'register_bloc.dart';
 
-sealed class RegisterState extends Equatable {
-  const RegisterState();
-  
+class RegisterState extends Equatable {
+  const RegisterState({
+    this.userMail = '',
+    this.userPassword = '',
+    this.formStatus = const InitialFormStatus(),
+  });
+
+  final String userMail;
+
+  bool get isValidMail => userMail.contains('@');
+
+  final String userPassword;
+  bool get isValidPassword => userPassword.length > 6;
+
+  final FormSubmissionStatus formStatus;
   @override
   List<Object> get props => [];
-}
 
-final class RegisterInitial extends RegisterState {}
+  RegisterState copyWith({
+    String? userMail,
+    String? userPassword,
+    FormSubmissionStatus? formStatus,
+  }) {
+    return RegisterState(
+      userMail: userMail ?? this.userMail,
+      userPassword: userPassword ?? this.userPassword,
+      formStatus: formStatus ?? this.formStatus,
+    );
+  }
+}

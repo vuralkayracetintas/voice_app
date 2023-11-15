@@ -56,7 +56,7 @@ class _SignInMailState extends State<SignInMail> {
             if (formStatus is SubmissionFailed) {
               _showSnackbar(context, formStatus.exception.toString());
             }
-            if (formStatus is SubmissionSucces) {
+            if (formStatus is SubmissionSuccess) {
               NavigationService.instance.navigateToPageRemoveAll(path: '/home');
             }
           },
