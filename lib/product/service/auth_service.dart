@@ -74,15 +74,28 @@ class AuthServices {
 
   Future<User?> signInWithEmail(
       {required String email, required String password}) async {
-    final UserCredential user = await _auth.signInWithEmailAndPassword(
-        email: email, password: password);
-    return user.user;
+    try {
+      print('kayit basarili');
+      UserCredential user = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      return user.user;
+    } catch (e) {
+      print('Giris hatali${e}');
+    }
+    return null;
   }
 
   Future<User?> signUpWithEmail(
       {required String email, required String password}) async {
-    final UserCredential user = await _auth.createUserWithEmailAndPassword(
-        email: email, password: password);
-    return user.user;
+    try {
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return result.user;
+    } catch (error) {
+      print("Kayıt hatası: $error");
+      return null;
+    }
   }
 }

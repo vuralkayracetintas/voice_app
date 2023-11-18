@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kartal/kartal.dart';
 import 'package:voice_app/bloc/LoginBloc/login_bloc.dart';
 import 'package:voice_app/bloc/form_submission_status.dart';
-import 'package:voice_app/core/navigation/navigation_service.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({
