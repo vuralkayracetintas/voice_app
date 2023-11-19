@@ -63,7 +63,9 @@ class _SignUpState extends State<SignUp> {
                   // mail textfield
                   SizedBox(
                     width: context.sized.width * 0.9,
-                    child: const CustomTextFormFieldMail(),
+                    child: const CustomTextFormFieldMail(
+                      isLogin: false,
+                    ),
                   ),
                   SizedBox(
                     height: context.sized.height * 0.022,
@@ -74,6 +76,7 @@ class _SignUpState extends State<SignUp> {
                     width: context.sized.width * 0.9,
                     child: CustomTextFieldPassword(
                       passwordVisible: _passwordVisible,
+                      isLogin: false,
                     ),
                   ),
                   SizedBox(
@@ -85,6 +88,7 @@ class _SignUpState extends State<SignUp> {
                     width: context.sized.width * 0.9,
                     child: CustomTextFieldPassword(
                       passwordVisible: _passwordAgainVisible,
+                      isLogin: false,
                     ),
                   ),
                   SizedBox(

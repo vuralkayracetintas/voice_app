@@ -22,7 +22,9 @@ class LoginFormWidget extends StatelessWidget {
         children: [
           SizedBox(
             width: context.sized.width * 0.9,
-            child: const CustomTextFormFieldMail(),
+            child: CustomTextFormFieldMail(
+              isLogin: isLogin,
+            ),
           ),
           SizedBox(
             height: context.sized.height * 0.022,
@@ -32,7 +34,10 @@ class LoginFormWidget extends StatelessWidget {
           //password textfielda
           SizedBox(
             width: context.sized.width * 0.9,
-            child: CustomTextFieldPassword(passwordVisible: _passwordVisible),
+            child: CustomTextFieldPassword(
+              passwordVisible: _passwordVisible,
+              isLogin: isLogin,
+            ),
           ),
           const RememberForgetPasswordWidget(),
           // const Spacer(),
