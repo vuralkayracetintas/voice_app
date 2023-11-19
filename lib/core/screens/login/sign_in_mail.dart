@@ -76,7 +76,9 @@ class _SignInMailState extends State<SignInMail> {
                 ),
                 const Spacer(),
                 //mail textfield
-                LoginFormWidget(),
+                LoginFormWidget(
+                  isLogin: true,
+                ),
                 const Spacer(),
                 const DividerOrWidget(),
                 const Spacer(),

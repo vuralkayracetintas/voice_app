@@ -42,13 +42,13 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         navigatorKey: NavigationService.instance.navigatorKey,
         onGenerateRoute: NavigationRoute.instance.generateRoute,
-
+        // home: MyHomePage(),
         theme: ThemeData(
           scaffoldBackgroundColor: ColorConstants.appBackground,
           appBarTheme: const AppBarTheme(
             color: ColorConstants.transparent,
           ),
-          useMaterial3: true,
+          useMaterial3: false,
           colorScheme: ColorScheme.fromSeed(
                   background: Colors.white,
                   seedColor: ColorConstants.colorsWhite)
