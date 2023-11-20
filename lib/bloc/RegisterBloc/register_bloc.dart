@@ -1,15 +1,17 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:voice_app/bloc/RegisterBloc/register_state.dart';
 import 'package:voice_app/bloc/form_submission_status.dart';
 import 'package:voice_app/product/repository/auth/auth_repository.dart';
 
 part 'register_event.dart';
-part 'register_state.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   final AuthRepository? authRepo;
   RegisterBloc({this.authRepo}) : super(const RegisterState()) {
-    on<RegisterEvent>((event, emit) {});
+    on<RegisterEvent>((event, emit) async {
+      await mapEventToState(event, emit);
+    });
   }
   Future mapEventToState(
       RegisterEvent event, Emitter<RegisterState> emit) async {

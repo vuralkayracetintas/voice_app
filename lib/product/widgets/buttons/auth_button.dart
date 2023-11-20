@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kartal/kartal.dart';
 import 'package:voice_app/bloc/LoginBloc/login_bloc.dart';
 import 'package:voice_app/bloc/RegisterBloc/register_bloc.dart';
+import 'package:voice_app/bloc/RegisterBloc/register_state.dart';
 import 'package:voice_app/bloc/form_submission_status.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
 
