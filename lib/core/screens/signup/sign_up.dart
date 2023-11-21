@@ -38,26 +38,28 @@ class _SignUpState extends State<SignUp> {
           ),
           backgroundColor: Colors.transparent,
         ),
-        body: BlocProvider(
-          create: (context) =>
-              RegisterBloc(authRepo: RepositoryStore.authRepository),
-          child: BlocListener<RegisterBloc, RegisterState>(
-            listenWhen: (previous, current) =>
-                previous.formStatus != current.formStatus,
-            listener: (context, state) {
-              final formStatus = state.formStatus;
+        body: SingleChildScrollView(
+          child: BlocProvider(
+            create: (context) =>
+                RegisterBloc(authRepo: RepositoryStore.authRepository),
+            child: BlocListener<RegisterBloc, RegisterState>(
+              listenWhen: (previous, current) =>
+                  previous.formStatus != current.formStatus,
+              listener: (context, state) {
+                final formStatus = state.formStatus;
 
-              if (formStatus is SubmissionFailed) {
-                _showSnackBar(context, formStatus.exception.toString());
-              }
+                if (formStatus is SubmissionFailed) {
+                  _showSnackBar(context, formStatus.exception.toString());
+                }
 
-              if (formStatus is SubmissionSuccess) {
-                // _goToWelcome(context);
-              }
-            },
-            child: Center(
-              child: SignUpFormWidget(
-                isLogin: false,
+                if (formStatus is SubmissionSuccess) {
+                  // _goToWelcome(context);
+                }
+              },
+              child: Center(
+                child: SignUpFormWidget(
+                  isLogin: false,
+                ),
               ),
             ),
           ),

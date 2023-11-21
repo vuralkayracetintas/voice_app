@@ -54,39 +54,47 @@ class _SignInMailState extends State<SignInMail> {
               NavigationService.instance.navigateToPageRemoveAll(path: '/home');
             }
           },
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Spacer(),
-                const AppIconWidget(),
-                Text(
-                  StringConstants.welcomeApp,
-                  style: context.general.textTheme.titleLarge?.copyWith(
-                    color: ColorConstants.colorsWhite,
-                    fontWeight: FontWeight.bold,
+          child: SingleChildScrollView(
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // const Spacer(),
+                  SizedBox(height: context.sized.height * 0.025),
+                  const AppIconWidget(),
+                  Text(
+                    StringConstants.welcomeApp,
+                    style: context.general.textTheme.titleLarge?.copyWith(
+                      color: ColorConstants.colorsWhite,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                Text(
-                  StringConstants.enterMailDesc,
-                  style: context.general.textTheme.titleSmall?.copyWith(
-                    color: ColorConstants.colorsWhite,
-                    fontWeight: FontWeight.bold,
+                  Text(
+                    StringConstants.enterMailDesc,
+                    style: context.general.textTheme.titleSmall?.copyWith(
+                      color: ColorConstants.colorsWhite,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const Spacer(),
-                //mail textfield
-                LoginFormWidget(
-                  isLogin: true,
-                ),
-                const Spacer(),
-                const DividerOrWidget(),
-                const Spacer(),
-                const SocialLoginButtonWidgets(),
-                const Spacer(),
-                const SignUpTextWidget(),
-                const Spacer()
-              ],
+                  // const Spacer(),
+                  SizedBox(height: context.sized.height * 0.025),
+                  //mail textfield
+                  LoginFormWidget(
+                    isLogin: true,
+                  ),
+                  // const Spacer(),
+                  SizedBox(height: context.sized.height * 0.025),
+                  const DividerOrWidget(),
+                  SizedBox(height: context.sized.height * 0.025),
+                  // const Spacer(),
+                  const SocialLoginButtonWidgets(),
+                  // const Spacer(),
+                  SizedBox(height: context.sized.height * 0.025),
+                  // SizedBox(height: context.sized.height * 0.025),
+                  const SignUpTextWidget(),
+                  // const Spacer()
+                ],
+              ),
             ),
           ),
         ),

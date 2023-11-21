@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
+import 'package:voice_app/bloc/RegisterBloc/register_bloc.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/widgets/buttons/auth_button.dart';
 import 'package:voice_app/product/widgets/buttons/custom_button.dart';
+import 'package:voice_app/product/widgets/icon/app_icon_widget.dart';
 import 'package:voice_app/product/widgets/textfields/custom_textfield_mail.dart';
 import 'package:voice_app/product/widgets/textfields/custom_textfield_password.dart';
 
@@ -16,6 +19,7 @@ class SignUpFormWidget extends StatelessWidget {
   final bool _passwordVisible = false;
   final bool _passwordAgainVisible = false;
   final bool isLogin;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -23,6 +27,9 @@ class SignUpFormWidget extends StatelessWidget {
         child: Column(
           children: [
             // mail textfield
+
+            const AppIconWidget(),
+            SizedBox(height: context.sized.height * 0.025),
             SizedBox(
               width: context.sized.width * 0.9,
               child: const CustomTextFormFieldMail(
@@ -63,9 +70,10 @@ class SignUpFormWidget extends StatelessWidget {
             //   onPressed: () {},
             // )
             AuthButton(
-                backgroundColor: ColorConstants.colorBlue,
-                formKey: _formKey,
-                isLogin: isLogin)
+              backgroundColor: ColorConstants.colorBlue,
+              formKey: _formKey,
+              isLogin: isLogin,
+            )
           ],
         ));
   }

@@ -37,18 +37,18 @@ class CustomTextFormFieldMail extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  focusedBorder: const OutlineInputBorder(
+                  border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30)),
                     borderSide: BorderSide(
                       color: Colors.grey,
                     ),
                   ),
-                  enabledBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    borderSide: BorderSide(
-                      color: Colors.grey,
-                    ),
-                  ),
+                  // enabledBorder: const OutlineInputBorder(
+                  //   borderRadius: BorderRadius.all(Radius.circular(30)),
+                  //   borderSide: BorderSide(
+                  //     color: Colors.grey,
+                  //   ),
+                  // ),
                   prefixIcon: Padding(
                     padding: context.padding.horizontalMedium,
                     child: SvgPicture.asset(
@@ -83,18 +83,24 @@ class CustomTextFormFieldMail extends StatelessWidget {
               ),
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                focusedBorder: const OutlineInputBorder(
+                border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(30)),
                   borderSide: BorderSide(
                     color: Colors.grey,
                   ),
                 ),
-                enabledBorder: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                  borderSide: BorderSide(
-                    color: Colors.grey,
-                  ),
-                ),
+                // enabledBorder: const OutlineInputBorder(
+                //   borderRadius: BorderRadius.all(Radius.circular(30)),
+                //   borderSide: BorderSide(
+                //     color: Colors.grey,
+                //   ),
+                // ),
+                // errorBorder: const OutlineInputBorder(
+                //   borderRadius: BorderRadius.all(Radius.circular(30)),
+                //   borderSide: BorderSide(
+                //     color: Colors.red,
+                //   ),
+                // ),
                 prefixIcon: Padding(
                   padding: context.padding.horizontalMedium,
                   child: SvgPicture.asset(

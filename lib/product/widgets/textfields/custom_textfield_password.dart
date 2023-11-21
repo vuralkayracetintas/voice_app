@@ -67,18 +67,24 @@ class _CustomTextFieldPasswordState extends State<CustomTextFieldPassword> {
                       // color: color,
                     ),
                   ),
-                  focusedBorder: const OutlineInputBorder(
+                  border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30)),
                     borderSide: BorderSide(
                       color: Colors.grey,
                     ),
                   ),
-                  enabledBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    borderSide: BorderSide(
-                      color: Colors.grey,
-                    ),
-                  ),
+                  // enabledBorder: const OutlineInputBorder(
+                  //   borderRadius: BorderRadius.all(Radius.circular(30)),
+                  //   borderSide: BorderSide(
+                  //     color: Colors.grey,
+                  //   ),
+                  // ),
+                  // errorBorder: OutlineInputBorder(
+                  //   borderRadius: BorderRadius.all(Radius.circular(30)),
+                  //   borderSide: BorderSide(
+                  //     color: Colors.grey,
+                  //   ),
+                  // ),
                   labelText: StringConstants.password,
                   labelStyle: context.general.textTheme.titleMedium?.copyWith(
                     color: ColorConstants.colorsWhite,
@@ -128,18 +134,24 @@ class _CustomTextFieldPasswordState extends State<CustomTextFieldPassword> {
                       // color: color,
                     ),
                   ),
-                  focusedBorder: const OutlineInputBorder(
+                  border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30)),
                     borderSide: BorderSide(
                       color: Colors.grey,
                     ),
                   ),
-                  enabledBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    borderSide: BorderSide(
-                      color: Colors.grey,
-                    ),
-                  ),
+                  // enabledBorder: const OutlineInputBorder(
+                  //   borderRadius: BorderRadius.all(Radius.circular(30)),
+                  //   borderSide: BorderSide(
+                  //     color: Colors.grey,
+                  //   ),
+                  // ),
+                  // errorBorder: OutlineInputBorder(
+                  //   borderRadius: BorderRadius.all(Radius.circular(30)),
+                  //   borderSide: BorderSide(
+                  //     color: Colors.grey,
+                  //   ),
+                  // ),
                   labelText: StringConstants.password,
                   labelStyle: context.general.textTheme.titleMedium?.copyWith(
                     color: ColorConstants.colorsWhite,
