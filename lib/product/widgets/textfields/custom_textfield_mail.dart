@@ -37,10 +37,11 @@ class CustomTextFormFieldMail extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
+                  focusColor: Colors.red,
                   border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30)),
                     borderSide: BorderSide(
-                      color: Colors.grey,
+                      color: Colors.white,
                     ),
                   ),
                   // enabledBorder: const OutlineInputBorder(

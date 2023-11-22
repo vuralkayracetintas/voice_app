@@ -51,9 +51,9 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(
-                  background: Colors.white,
-                  seedColor: ColorConstants.colorsWhite)
-              .copyWith(background: ColorConstants.appBackground),
+            background: Colors.white,
+            seedColor: ColorConstants.colorsWhite,
+          ).copyWith(background: ColorConstants.appBackground),
         ),
         // home: const MyHomePage(),
       ),
