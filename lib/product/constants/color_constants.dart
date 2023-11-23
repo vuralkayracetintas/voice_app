@@ -9,6 +9,6 @@ class ColorConstants {
   static const Color dividerColor = Color(0xff22262F);
   static const Color colorGrey2 = Color(0xffece1e1);
   static const Color darkBtnColor = Color(0xff1A1E24);
-
+  static const Color alertBG = Color(0xff12161E);
   static const Color transparent = Colors.transparent;
 }

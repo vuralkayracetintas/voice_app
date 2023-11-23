@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
@@ -51,7 +53,7 @@ class _SignInMailState extends State<SignInMail> {
               _showSnackbar(context, formStatus.exception.toString());
             }
             if (formStatus is SubmissionSuccess) {
-              NavigationService.instance.navigateToPageRemoveAll(path: '/home');
+              showLoginSuccess(context);
             }
           },
           child: SingleChildScrollView(
@@ -78,7 +80,7 @@ class _SignInMailState extends State<SignInMail> {
                   ),
                   // const Spacer(),
                   SizedBox(height: context.sized.height * 0.025),
-                  //mail textfield
+                  //mail textfield`
                   LoginFormWidget(
                     isLogin: true,
                   ),
@@ -108,4 +110,52 @@ class _SignInMailState extends State<SignInMail> {
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
+}
+
+void showLoginSuccess(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: AlertDialog(
+            backgroundColor: ColorConstants.alertBG,
+            title: //const Text('AlertDialog Title'),
+                const Image(
+              image: AssetImage(StringConstants.loginSuccess),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  StringConstants.signInSuccess,
+                  style: context.general.textTheme.titleLarge?.copyWith(
+                      color: ColorConstants.colorsWhite,
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(StringConstants.successDesc,
+                    style: context.general.textTheme.titleSmall?.copyWith(
+                      color: ColorConstants.colorsWhite,
+                    )),
+              ],
+            ),
+            actions: <Widget>[
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: Size(context.sized.width * 0.8, 50),
+                      backgroundColor: ColorConstants.colorBlue),
+                  onPressed: () {
+                    NavigationService.instance
+                        .navigateToPageRemoveAll(path: '/home');
+                  },
+                  child: Text(
+                    StringConstants.continueHome,
+                    style: context.general.textTheme.titleMedium?.copyWith(
+                      color: ColorConstants.colorsWhite,
+                    ),
+                  )),
+            ],
+          ),
+        );
+      });
 }

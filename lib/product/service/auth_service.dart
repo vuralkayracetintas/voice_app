@@ -72,17 +72,25 @@ class AuthServices {
 
   // Email sign in
 
+  // Future<User?> signInWithEmail(
+  //     {required String email, required String password}) async {
+  //   try {
+  //     print('kayit basarili');
+  //     UserCredential user = await _auth.signInWithEmailAndPassword(
+  //         email: email, password: password);
+  //     return user.user;
+  //   } catch (e) {
+  //     print('Giris hatali${e}');
+  //   }
+  //   return null;
+  // }
+
   Future<User?> signInWithEmail(
       {required String email, required String password}) async {
-    try {
-      print('kayit basarili');
-      UserCredential user = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      return user.user;
-    } catch (e) {
-      print('Giris hatali${e}');
-    }
-    return null;
+    // _callFirebaseEmulator();
+    final UserCredential user = await _auth.signInWithEmailAndPassword(
+        email: email, password: password);
+    return user.user;
   }
 
   Future<User?> signUpWithEmail(
