@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
+import 'package:voice_app/product/repository/auth/auth_repository.dart';
 import 'package:voice_app/product/widgets/buttons/custom_button.dart';
 import 'package:voice_app/product/widgets/textfields/custom_textfield_forget_password.dart';
 
@@ -13,13 +14,14 @@ class ForgetPassword extends StatelessWidget {
     final _controller = TextEditingController();
     final TextEditingController emailController = TextEditingController();
 
-    Future<void> passwordReset(String email) async {
+    Future<void> passwordReset(
+      String email,
+    ) async {
       try {
         // Firebase Authentication'da kullanıcının var olup olmadığını kontrol et
         var methods =
             await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
 
-        // Eğer kullanıcı varsa, şifre sıfırlama e-postasını gönder
         if (methods.isNotEmpty) {
           await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
           print('Şifre sıfırlama e-postası gönderildi');
@@ -86,6 +88,7 @@ class ForgetPassword extends StatelessWidget {
               backgroundColor: ColorConstants.colorBlue,
               onPressed: () {
                 String email = emailController.text;
+
                 passwordReset(email);
               },
             ),
