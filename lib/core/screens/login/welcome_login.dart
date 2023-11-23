@@ -63,6 +63,9 @@ class WelcomeLogin extends StatelessWidget {
             ),
             const Spacer(),
             const Divider(color: ColorConstants.dividerColor),
+            SizedBox(
+              height: context.sized.height * 0.025,
+            ),
             CustomButton(
               description: StringConstants.signInMail,
               backgroundColor: ColorConstants.colorBlue,
