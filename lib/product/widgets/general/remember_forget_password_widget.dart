@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
 
@@ -37,7 +38,9 @@ class _RememberForgetPasswordWidgetState
         ),
         const Spacer(),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            NavigationService.instance.navigateToPage(path: '/forget-password');
+          },
           child: Text(
             StringConstants.forgetPass,
             style: context.general.textTheme.titleSmall?.copyWith(

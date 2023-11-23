@@ -90,6 +90,7 @@ class AuthServices {
     // _callFirebaseEmulator();
     final UserCredential user = await _auth.signInWithEmailAndPassword(
         email: email, password: password);
+    print('error merror falan $e');
     return user.user;
   }
 

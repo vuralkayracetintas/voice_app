@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:voice_app/core/screens/forget_password/forget_password.dart';
 import 'package:voice_app/core/screens/login/sign_in_mail.dart';
 import 'package:voice_app/core/screens/login/welcome_login.dart';
 import 'package:voice_app/core/screens/signup/sign_up.dart';
@@ -21,6 +22,8 @@ class NavigationRoute {
 
       case '/home':
         return MaterialPageRoute(builder: (context) => const MyHomePage());
+      case '/forget-password':
+        return MaterialPageRoute(builder: (context) => ForgetPassword());
       default:
         return MaterialPageRoute(
           builder: (BuildContext context) => Container(),
