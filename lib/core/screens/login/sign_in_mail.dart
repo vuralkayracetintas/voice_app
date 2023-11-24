@@ -9,6 +9,7 @@ import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
 import 'package:voice_app/product/repository/auth/repository_store.dart';
+import 'package:voice_app/product/widgets/general/custom_alert_card.dart';
 import 'package:voice_app/product/widgets/icon/app_icon_widget.dart';
 import 'package:voice_app/product/widgets/general/divider_or_widget.dart';
 import 'package:voice_app/product/widgets/general/login_form_widget.dart';
@@ -116,45 +117,29 @@ void showLoginSuccess(BuildContext context) {
   showDialog(
       context: context,
       builder: (BuildContext context) {
-        return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-          child: AlertDialog(
-            backgroundColor: ColorConstants.alertBG,
-            title: //const Text('AlertDialog Title'),
-                const Image(
-              image: AssetImage(StringConstants.loginSuccess),
+        return CustomAlertCard(
+          image: const Image(
+            image: AssetImage(StringConstants.loginSuccess),
+          ),
+          title: Text(
+            StringConstants.signInSuccess,
+            style: context.general.textTheme.titleLarge?.copyWith(
+                color: ColorConstants.colorsWhite, fontWeight: FontWeight.bold),
+          ),
+          desc: Text(
+            StringConstants.successDesc,
+            style: context.general.textTheme.titleSmall?.copyWith(
+              color: ColorConstants.colorsWhite,
             ),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  StringConstants.signInSuccess,
-                  style: context.general.textTheme.titleLarge?.copyWith(
-                      color: ColorConstants.colorsWhite,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(StringConstants.successDesc,
-                    style: context.general.textTheme.titleSmall?.copyWith(
-                      color: ColorConstants.colorsWhite,
-                    )),
-              ],
+          ),
+          onPressed: () {
+            NavigationService.instance.navigateToPageRemoveAll(path: '/home');
+          },
+          buttonText: Text(
+            StringConstants.continueHome,
+            style: context.general.textTheme.titleMedium?.copyWith(
+              color: ColorConstants.colorsWhite,
             ),
-            actions: <Widget>[
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: Size(context.sized.width * 0.8, 50),
-                      backgroundColor: ColorConstants.colorBlue),
-                  onPressed: () {
-                    NavigationService.instance
-                        .navigateToPageRemoveAll(path: '/home');
-                  },
-                  child: Text(
-                    StringConstants.continueHome,
-                    style: context.general.textTheme.titleMedium?.copyWith(
-                      color: ColorConstants.colorsWhite,
-                    ),
-                  )),
-            ],
           ),
         );
       });
