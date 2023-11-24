@@ -21,23 +21,16 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   @override
   Widget build(BuildContext context) {
     final controller = TextEditingController();
-    final TextEditingController emailController = TextEditingController();
 
-    void dispose() {
-      controller.dispose();
-
-      super.dispose();
-    }
-
-    Future<void> passwordReset() async {
-      try {
-        await FirebaseAuth.instance
-            .sendPasswordResetEmail(email: controller.text.trim());
-        showResetPasswordAlert(context);
-      } on FirebaseAuthException catch (e) {
-        print('error: $e');
-      }
-    }
+    // Future<void> passwordReset() async {
+    //   try {
+    //     await FirebaseAuth.instance
+    //         .sendPasswordResetEmail(email: controller.text.trim());
+    //     showResetPasswordAlert(context);
+    //   } on FirebaseAuthException catch (e) {
+    //     print('error: $e');
+    //   }
+    // }
 
     return Scaffold(
       appBar: AppBar(
@@ -125,7 +118,8 @@ void showResetPasswordAlert(context) {
                   color: ColorConstants.colorsWhite,
                 )),
             onPressed: () {
-              NavigationService.instance.navigateToPageRemoveAll(path: '/home');
+              NavigationService.instance
+                  .navigateToPageRemoveAll(path: '/sign_in_mail');
             },
             buttonText: Text('Go Home',
                 style: context.general.textTheme.titleSmall?.copyWith(
