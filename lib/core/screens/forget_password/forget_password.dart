@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/repository/auth/auth_repository.dart';
 import 'package:voice_app/product/widgets/buttons/custom_button.dart';
+import 'package:voice_app/product/widgets/general/custom_alert_card.dart';
 import 'package:voice_app/product/widgets/textfields/custom_textfield_forget_password.dart';
 
 class ForgetPassword extends StatefulWidget {
@@ -29,6 +31,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
       try {
         await FirebaseAuth.instance
             .sendPasswordResetEmail(email: controller.text.trim());
+        showResetPasswordAlert(context);
       } on FirebaseAuthException catch (e) {
         print('error: $e');
       }
@@ -96,4 +99,32 @@ class _ForgetPasswordState extends State<ForgetPassword> {
       ),
     );
   }
+}
+
+void showResetPasswordAlert(context) {
+  showDialog(
+      context: (context),
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return CustomAlertCard(
+            image: Image(image: AssetImage('assets/images/password.png')),
+            title: Text('Reset Password Succes!',
+                textAlign: TextAlign.center,
+                style: context.general.textTheme.headlineSmall?.copyWith(
+                  color: ColorConstants.colorsWhite,
+                )),
+            desc: Text(
+                'We have sent password reset instructions to your email address. Please check your inbox.',
+                textAlign: TextAlign.center,
+                style: context.general.textTheme.titleSmall?.copyWith(
+                  color: ColorConstants.colorsWhite,
+                )),
+            onPressed: () {
+              NavigationService.instance.navigateToPageRemoveAll(path: '/home');
+            },
+            buttonText: Text('Go Home',
+                style: context.general.textTheme.titleSmall?.copyWith(
+                  color: ColorConstants.colorsWhite,
+                )));
+      });
 }
