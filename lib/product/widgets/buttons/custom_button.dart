@@ -54,7 +54,6 @@ class CustomButton extends StatelessWidget {
   }
 }
 
-
 /*
 
  color: const Color(0xff1A1E24),
