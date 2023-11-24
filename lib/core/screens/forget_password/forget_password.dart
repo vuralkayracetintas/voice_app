@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
+import 'package:voice_app/bloc/forget_password/forget_password_bloc.dart';
 import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/repository/auth/auth_repository.dart';
@@ -91,7 +93,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               description: 'Send Code',
               backgroundColor: ColorConstants.colorBlue,
               onPressed: () {
-                passwordReset();
+                context.read<ForgetPasswordBloc>().add(
+                      ForgetPasswordEvent(controller.text.trim(), context),
+                    );
+                // passwordReset();
               },
             ),
           ],

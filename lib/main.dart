@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voice_app/bloc/LoginBloc/login_bloc.dart';
 import 'package:voice_app/bloc/RegisterBloc/register_bloc.dart';
 import 'package:voice_app/bloc/VoiceBloc/voice_bloc.dart';
+import 'package:voice_app/bloc/forget_password/forget_password_bloc.dart';
 import 'package:voice_app/core/navigation/navigation_route.dart';
 import 'package:voice_app/core/navigation/navigation_service.dart';
 
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
                 LoginBloc(authRepo: RepositoryStore.authRepository)),
         RepositoryProvider<RegisterBloc>(
             create: (context) =>
-                RegisterBloc(authRepo: RepositoryStore.authRepository))
+                RegisterBloc(authRepo: RepositoryStore.authRepository)),
+        RepositoryProvider(create: (context) => ForgetPasswordBloc())
       ],
       child: MaterialApp(
         navigatorKey: NavigationService.instance.navigatorKey,
