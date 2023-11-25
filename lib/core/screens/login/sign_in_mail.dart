@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
@@ -24,6 +25,8 @@ class SignInMail extends StatefulWidget {
 }
 
 class _SignInMailState extends State<SignInMail> {
+  User? user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +57,15 @@ class _SignInMailState extends State<SignInMail> {
               _showSnackbar(context, formStatus.exception.toString());
             }
             if (formStatus is SubmissionSuccess) {
-              showLoginSuccess(context);
+              if (user != null && user!.emailVerified) {
+                // Kullanıcı e-posta adresini onaylamışsa işlemlere devam edebilirsiniz.
+                print('mail onaylandi');
+                showLoginSuccess(context);
+              } else {
+                // Kullanıcı e-posta adresini onaylamamışsa uyarı gösterin.
+                print('mail onaylanmadi');
+                showMailNotVerified(context);
+              }
             }
           },
           child: SingleChildScrollView(
@@ -137,6 +148,39 @@ void showLoginSuccess(BuildContext context) {
           },
           buttonText: Text(
             StringConstants.continueHome,
+            style: context.general.textTheme.titleMedium?.copyWith(
+              color: ColorConstants.colorsWhite,
+            ),
+          ),
+        );
+      });
+}
+
+void showMailNotVerified(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CustomAlertCard(
+          image: const Image(
+            image: AssetImage(StringConstants.user_img),
+          ),
+          title: Text(
+            'mail onay',
+            style: context.general.textTheme.titleLarge?.copyWith(
+                color: ColorConstants.colorsWhite, fontWeight: FontWeight.bold),
+          ),
+          desc: Text(
+            StringConstants.successDesc,
+            style: context.general.textTheme.titleSmall?.copyWith(
+              color: ColorConstants.colorsWhite,
+            ),
+          ),
+          onPressed: () {
+            // NavigationService.instance.navigateToPageRemoveAll(path: '/home');
+          },
+          buttonText: Text(
+            // StringConstants.continueHome,
+            'mail onaylaaaaa',
             style: context.general.textTheme.titleMedium?.copyWith(
               color: ColorConstants.colorsWhite,
             ),

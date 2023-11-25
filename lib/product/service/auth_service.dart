@@ -101,6 +101,10 @@ class AuthServices {
         email: email,
         password: password,
       );
+
+      // Kullanıcıya doğrulama e-postası gönderme
+      await _auth.currentUser?.sendEmailVerification();
+
       return result.user;
     } catch (error) {
       print("Kayıt hatası: $error");
