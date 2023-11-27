@@ -32,11 +32,14 @@ class _SignInMailState extends State<SignInMail> {
     return Scaffold(
       // backgroundColor: const Color(0xff0D0F13),
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            NavigationService.instance.navigateToBack();
-          },
-          icon: const Icon(Icons.arrow_back_ios),
+        // leading: IconButton(
+        //   onPressed: () {
+        //     NavigationService.instance.navigateToBack();
+        //   },
+        //   icon: const Icon(Icons.arrow_back_ios),
+        //   color: ColorConstants.colorsWhite,
+        // ),
+        iconTheme: const IconThemeData(
           color: ColorConstants.colorsWhite,
         ),
         title: Text(
@@ -57,7 +60,18 @@ class _SignInMailState extends State<SignInMail> {
               message.showSnackbar(context, formStatus.exception.toString());
             }
             if (formStatus is SubmissionSuccess) {
-              message.showLoginSuccess(context);
+              final user = FirebaseAuth.instance.currentUser;
+              if (user != null) {
+                if (user.emailVerified) {
+                  // Kullanıcı e-posta adresini onaylamışsa
+                  message.showLoginSuccess(context);
+                  print('mail onaylanmış');
+                } else {
+                  // Kullanıcı e-posta adresini onaylamamışsa, onaylama işlemi başlat
+                  // Örneğin: authRepo.sendEmailVerification();
+                  print('mail onaylanmamış');
+                }
+              }
             }
           },
           child: SingleChildScrollView(

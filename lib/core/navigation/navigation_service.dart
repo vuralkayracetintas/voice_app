@@ -19,6 +19,8 @@ class NavigationService implements INavigationService {
   Future<void> navigateToPageRemoveAll({String? path, Object? object}) async {
     await navigatorKey.currentState!
         .pushNamedAndRemoveUntil(path!, removeAllRoutes, arguments: object);
+    Navigator.of(navigatorKey.currentContext!)
+        .popUntil((route) => route.isFirst);
   }
 
   @override

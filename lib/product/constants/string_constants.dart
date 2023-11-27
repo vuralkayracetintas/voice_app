@@ -38,6 +38,6 @@ class StringConstants {
 
   //Images
   static const String appIcon = '${baseImage}app_icon.png';
-  static const String loginSuccess = '${baseImage}suc_login.png';
+  static const String success = '${baseImage}suc_login.png';
   static const String user_img = '${baseImage}user.png';
 }

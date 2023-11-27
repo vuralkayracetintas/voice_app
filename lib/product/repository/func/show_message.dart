@@ -19,11 +19,12 @@ class ShowMessage {
 // success login dialog
   void showLoginSuccess(BuildContext context) {
     showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (BuildContext context) {
           return CustomAlertCard(
             image: const Image(
-              image: AssetImage(StringConstants.loginSuccess),
+              image: AssetImage(StringConstants.success),
             ),
             title: Text(
               StringConstants.signInSuccess,
@@ -50,9 +51,23 @@ class ShowMessage {
         });
   }
 
+  // void showLoginFailed(BuildContext context) {
+  //   showDialog(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return CustomAlertCard(
+  //             image: image,
+  //             title: title,
+  //             desc: desc,
+  //             onPressed: onPressed,
+  //             buttonText: buttonText);
+  //       });
+  // }
+
   // mail verified
   void showMailNotVerified(BuildContext context) {
     showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (BuildContext context) {
           return CustomAlertCard(
@@ -82,6 +97,41 @@ class ShowMessage {
               ),
             ),
           );
+        });
+  }
+
+  void showSuccessRegister(BuildContext context) {
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return CustomAlertCard(
+              image: Image(
+                image: AssetImage(StringConstants.success),
+              ),
+              title: Text(
+                'Kayit Basarili',
+                style: context.general.textTheme.titleLarge?.copyWith(
+                    color: ColorConstants.colorsWhite,
+                    fontWeight: FontWeight.bold),
+              ),
+              desc: Text(
+                'Kayit isleminiz basariyla gerceklesti, luften mail adresinize gelen maili onaylayiniz',
+                textAlign: TextAlign.center,
+                style: context.general.textTheme.titleSmall?.copyWith(
+                  color: ColorConstants.colorsWhite,
+                ),
+              ),
+              onPressed: () {
+                NavigationService.instance
+                    .navigateToPageRemoveAll(path: '/sign_in_mail');
+              },
+              buttonText: Text(
+                'Giris Ekranina Don',
+                style: context.general.textTheme.titleMedium?.copyWith(
+                  color: ColorConstants.colorsWhite,
+                ),
+              ));
         });
   }
 }

@@ -72,32 +72,42 @@ class AuthServices {
 
   // Email sign in
 
+  // Future<User?> signInWithEmail(
+  //     {required String email, required String password}) async {
+  //   // _callFirebaseEmulator();
+
+  //   final UserCredential user = await _auth.signInWithEmailAndPassword(
+  //       email: email, password: password);
+
+  //   print('user ${user}');
+
+  //   return user.user;
+  // }
   Future<User?> signInWithEmail(
       {required String email, required String password}) async {
-    // _callFirebaseEmulator();
-    final UserCredential user = await _auth.signInWithEmailAndPassword(
-        email: email, password: password);
-    print('user ${user}');
+    final UserCredential userCredential = await _auth
+        .signInWithEmailAndPassword(email: email, password: password);
 
-    return user.user;
+    // Kullanıcının e-posta adresi doğrulanmış mı kontrol et
+    if (userCredential.user?.emailVerified ?? false) {
+      print('Kullanıcı girişi başarılı: ${userCredential.user?.email}');
+      return userCredential.user;
+    } else {
+      print('Kullanıcı e-posta adresini onaylamamış.');
+      // Eğer e-posta onaylanmamışsa isteğe bağlı olarak kullanıcıya bir e-posta gönderebilir veya hata mesajı verebilirsiniz.
+      return null;
+    }
   }
 
   Future<User?> signUpWithEmail(
       {required String email, required String password}) async {
-    try {
-      UserCredential result = await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+    UserCredential result = await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
 
-      // Kullanıcıya doğrulama e-postası gönderme
-      await _auth.currentUser?.sendEmailVerification();
+    await _auth.currentUser?.sendEmailVerification();
 
-      return result.user;
-    } catch (error) {
-      print("Kayıt hatası: $error");
-
-      return null;
-    }
+    return result.user;
   }
 }

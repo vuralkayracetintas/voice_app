@@ -9,6 +9,7 @@ import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 
 import 'package:voice_app/product/repository/auth/repository_store.dart';
+import 'package:voice_app/product/repository/func/show_message.dart';
 
 import 'package:voice_app/product/widgets/general/sign_up_form_widget.dart';
 
@@ -25,6 +26,7 @@ class _SignUpState extends State<SignUp> {
     super.initState();
   }
 
+  ShowMessage message = ShowMessage();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,10 +52,13 @@ class _SignUpState extends State<SignUp> {
 
                 if (formStatus is SubmissionFailed) {
                   _showSnackBar(context, formStatus.exception.toString());
+                  print('asdasdasd');
                 }
 
                 if (formStatus is SubmissionSuccess) {
                   // _goToWelcome(context);
+                  // message.showSuccessRegister(context);
+                  print('sssssss');
                 }
               },
               child: Center(
@@ -68,7 +73,8 @@ class _SignUpState extends State<SignUp> {
 }
 
 void _showSnackBar(BuildContext context, String message) {
-  final snackBar = SnackBar(content: Text(message));
+  final snackBar =
+      SnackBar(content: Text('Mail adresi zaten kayitli veya yanlis girildi'));
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
 

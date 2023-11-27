@@ -93,7 +93,6 @@ class AuthButton extends StatelessWidget {
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         context.read<RegisterBloc>().add(RegisterSubmitted());
-
                         print('register calisti');
                       }
                     },
