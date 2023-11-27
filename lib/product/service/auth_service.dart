@@ -10,28 +10,28 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthServices {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   // Google sign in
-  Future<UserCredential?> signInWithGoogle() async {
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
     try {
-      final GoogleSignInAccount? googleSignInAccount =
-          await GoogleSignIn().signIn();
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-      final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount!.authentication;
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
 
+      // Create a new credential
       final credential = GoogleAuthProvider.credential(
-        accessToken: googleSignInAuthentication.accessToken,
-        idToken: googleSignInAuthentication.idToken,
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
       );
-
+      print('googleUser: $googleUser');
+      print('credential: $credential');
+      print('giris basarili ');
+      // Once signed in, return the UserCredential
       return await FirebaseAuth.instance.signInWithCredential(credential);
-    } catch (error) {
-      if (error is SignInWithAppleAuthorizationException) {
-        print('Apple Sign In Hata: ${error.toString()}');
-        print('Hata Kodu: ${error.code}');
-        print('Hata Açıklaması: ${error}');
-      } else {
-        print('Apple Sign In Hata: $error');
-      }
+    } catch (e) {
+      print('Google Sign-In Hatası: $e');
+      throw e; // Hatanın yeniden fırlatılması, uygun şekilde yönetmenizi sağlar.
     }
   }
 
@@ -72,25 +72,13 @@ class AuthServices {
 
   // Email sign in
 
-  // Future<User?> signInWithEmail(
-  //     {required String email, required String password}) async {
-  //   try {
-  //     print('kayit basarili');
-  //     UserCredential user = await _auth.signInWithEmailAndPassword(
-  //         email: email, password: password);
-  //     return user.user;
-  //   } catch (e) {
-  //     print('Giris hatali${e}');
-  //   }
-  //   return null;
-  // }
-
   Future<User?> signInWithEmail(
       {required String email, required String password}) async {
     // _callFirebaseEmulator();
     final UserCredential user = await _auth.signInWithEmailAndPassword(
         email: email, password: password);
-    print('error merror falan $e');
+    print('user ${user}');
+
     return user.user;
   }
 
@@ -108,6 +96,7 @@ class AuthServices {
       return result.user;
     } catch (error) {
       print("Kayıt hatası: $error");
+
       return null;
     }
   }

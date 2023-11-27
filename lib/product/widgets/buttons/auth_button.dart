@@ -48,7 +48,6 @@ class AuthButton extends StatelessWidget {
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           context.read<LoginBloc>().add(LoginSubmitted());
-
                           print('Login calisti');
                         }
                       },

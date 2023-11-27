@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +8,7 @@ import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
 import 'package:voice_app/product/repository/auth/repository_store.dart';
+import 'package:voice_app/product/repository/func/show_message.dart';
 import 'package:voice_app/product/widgets/general/custom_alert_card.dart';
 import 'package:voice_app/product/widgets/icon/app_icon_widget.dart';
 import 'package:voice_app/product/widgets/general/divider_or_widget.dart';
@@ -26,6 +25,7 @@ class SignInMail extends StatefulWidget {
 
 class _SignInMailState extends State<SignInMail> {
   User? user = FirebaseAuth.instance.currentUser;
+  ShowMessage message = ShowMessage();
 
   @override
   Widget build(BuildContext context) {
@@ -54,18 +54,10 @@ class _SignInMailState extends State<SignInMail> {
           listener: (context, state) {
             final formStatus = state.formStatus;
             if (formStatus is SubmissionFailed) {
-              _showSnackbar(context, formStatus.exception.toString());
+              message.showSnackbar(context, formStatus.exception.toString());
             }
             if (formStatus is SubmissionSuccess) {
-              if (user != null && user!.emailVerified) {
-                // Kullanıcı e-posta adresini onaylamışsa işlemlere devam edebilirsiniz.
-                print('mail onaylandi');
-                showLoginSuccess(context);
-              } else {
-                // Kullanıcı e-posta adresini onaylamamışsa uyarı gösterin.
-                print('mail onaylanmadi');
-                showMailNotVerified(context);
-              }
+              message.showLoginSuccess(context);
             }
           },
           child: SingleChildScrollView(
@@ -115,76 +107,4 @@ class _SignInMailState extends State<SignInMail> {
       ),
     );
   }
-
-  void _showSnackbar(BuildContext context, String message) {
-    final snackBar = SnackBar(
-      content: Text(message),
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
-}
-
-void showLoginSuccess(BuildContext context) {
-  showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return CustomAlertCard(
-          image: const Image(
-            image: AssetImage(StringConstants.loginSuccess),
-          ),
-          title: Text(
-            StringConstants.signInSuccess,
-            style: context.general.textTheme.titleLarge?.copyWith(
-                color: ColorConstants.colorsWhite, fontWeight: FontWeight.bold),
-          ),
-          desc: Text(
-            StringConstants.successDesc,
-            style: context.general.textTheme.titleSmall?.copyWith(
-              color: ColorConstants.colorsWhite,
-            ),
-          ),
-          onPressed: () {
-            NavigationService.instance.navigateToPageRemoveAll(path: '/home');
-          },
-          buttonText: Text(
-            StringConstants.continueHome,
-            style: context.general.textTheme.titleMedium?.copyWith(
-              color: ColorConstants.colorsWhite,
-            ),
-          ),
-        );
-      });
-}
-
-void showMailNotVerified(BuildContext context) {
-  showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return CustomAlertCard(
-          image: const Image(
-            image: AssetImage(StringConstants.user_img),
-          ),
-          title: Text(
-            'mail onay',
-            style: context.general.textTheme.titleLarge?.copyWith(
-                color: ColorConstants.colorsWhite, fontWeight: FontWeight.bold),
-          ),
-          desc: Text(
-            StringConstants.successDesc,
-            style: context.general.textTheme.titleSmall?.copyWith(
-              color: ColorConstants.colorsWhite,
-            ),
-          ),
-          onPressed: () {
-            // NavigationService.instance.navigateToPageRemoveAll(path: '/home');
-          },
-          buttonText: Text(
-            // StringConstants.continueHome,
-            'mail onaylaaaaa',
-            style: context.general.textTheme.titleMedium?.copyWith(
-              color: ColorConstants.colorsWhite,
-            ),
-          ),
-        );
-      });
 }
