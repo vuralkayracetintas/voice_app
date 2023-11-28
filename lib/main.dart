@@ -40,7 +40,9 @@ class MyApp extends StatelessWidget {
         RepositoryProvider<RegisterBloc>(
             create: (context) =>
                 RegisterBloc(authRepo: RepositoryStore.authRepository)),
-        RepositoryProvider(create: (context) => ForgetPasswordBloc())
+        RepositoryProvider(
+          create: (context) => ForgetPasswordBloc(),
+        )
       ],
       child: MaterialApp(
         navigatorKey: NavigationService.instance.navigatorKey,

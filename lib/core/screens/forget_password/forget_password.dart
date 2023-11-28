@@ -41,58 +41,72 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               // fontSize: 20,
             )),
       ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: context.sized.dynamicHeight(0.04),
+      body: BlocProvider(
+        create: (context) => ForgetPasswordBloc(),
+        child: BlocListener<ForgetPasswordBloc, ForgetPasswordState>(
+          listener: (context, state) {
+            final formStatus = state.formStatus;
+            if (formStatus is ForgetPasswordSuccess) {
+              showResetPasswordAlert(context);
+            }
+            if (formStatus is ForgetPasswordError) {
+              print('error: ');
+            }
+          },
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: context.sized.dynamicHeight(0.04),
+                ),
+                Text(
+                  'Reset Password 🔑',
+                  style: context.general.textTheme.headlineSmall?.copyWith(
+                    color: ColorConstants.colorsWhite,
+                  ),
+                ),
+                SizedBox(
+                  height: context.sized.dynamicHeight(0.01),
+                ),
+                Text(
+                  'Enter your email to Reset Password',
+                  style: context.general.textTheme.titleSmall?.copyWith(
+                    color: ColorConstants.colorsWhite,
+                  ),
+                ),
+                SizedBox(
+                  height: context.sized.dynamicHeight(0.04),
+                ),
+                Padding(
+                  padding: context.padding.low,
+                  child: CustomTextFieldForgetPassword(
+                    controller: controller,
+                  ),
+                ),
+                SizedBox(
+                  height: context.sized.dynamicHeight(0.02),
+                ),
+                // TextField(
+                //     controller: emailController,
+                //     decoration: InputDecoration(labelText: 'E-posta'),
+                //     keyboardType: TextInputType.emailAddress,
+                //     style: context.general.textTheme.titleMedium?.copyWith(
+                //       color: ColorConstants.colorsWhite,
+                //     )),
+                CustomButton(
+                  description: 'Send Code',
+                  backgroundColor: ColorConstants.colorBlue,
+                  onPressed: () {
+                    context.read<ForgetPasswordBloc>().add(
+                          ForgetPasswordEvent(controller.text.trim(), context),
+                        );
+                    // passwordReset();
+                  },
+                ),
+              ],
             ),
-            Text(
-              'Reset Password 🔑',
-              style: context.general.textTheme.headlineSmall?.copyWith(
-                color: ColorConstants.colorsWhite,
-              ),
-            ),
-            SizedBox(
-              height: context.sized.dynamicHeight(0.01),
-            ),
-            Text(
-              'Enter your email to Reset Password',
-              style: context.general.textTheme.titleSmall?.copyWith(
-                color: ColorConstants.colorsWhite,
-              ),
-            ),
-            SizedBox(
-              height: context.sized.dynamicHeight(0.04),
-            ),
-            Padding(
-              padding: context.padding.low,
-              child: CustomTextFieldForgetPassword(
-                controller: controller,
-              ),
-            ),
-            SizedBox(
-              height: context.sized.dynamicHeight(0.02),
-            ),
-            // TextField(
-            //     controller: emailController,
-            //     decoration: InputDecoration(labelText: 'E-posta'),
-            //     keyboardType: TextInputType.emailAddress,
-            //     style: context.general.textTheme.titleMedium?.copyWith(
-            //       color: ColorConstants.colorsWhite,
-            //     )),
-            CustomButton(
-              description: 'Send Code',
-              backgroundColor: ColorConstants.colorBlue,
-              onPressed: () {
-                context.read<ForgetPasswordBloc>().add(
-                      ForgetPasswordEvent(controller.text.trim(), context),
-                    );
-                // passwordReset();
-              },
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -127,3 +141,11 @@ void showResetPasswordAlert(context) {
                 )));
       });
 }
+
+
+
+
+/*
+
+
+*/
