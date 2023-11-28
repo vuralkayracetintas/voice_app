@@ -8,6 +8,7 @@ import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
 import 'package:voice_app/product/repository/auth/repository_store.dart';
+import 'package:voice_app/product/repository/func/login_function.dart';
 import 'package:voice_app/product/repository/func/show_message.dart';
 import 'package:voice_app/product/widgets/general/custom_alert_card.dart';
 import 'package:voice_app/product/widgets/icon/app_icon_widget.dart';
@@ -26,7 +27,7 @@ class SignInMail extends StatefulWidget {
 class _SignInMailState extends State<SignInMail> {
   User? user = FirebaseAuth.instance.currentUser;
   ShowMessage message = ShowMessage();
-
+  LoginFunction login = LoginFunction();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,12 +64,10 @@ class _SignInMailState extends State<SignInMail> {
               final user = FirebaseAuth.instance.currentUser;
               if (user != null) {
                 if (user.emailVerified) {
-                  // Kullanıcı e-posta adresini onaylamışsa
                   message.showLoginSuccess(context);
                   print('mail onaylanmış');
                 } else {
-                  // Kullanıcı e-posta adresini onaylamamışsa, onaylama işlemi başlat
-                  // Örneğin: authRepo.sendEmailVerification();
+                  message.showMailNotVerified(context);
                   print('mail onaylanmamış');
                 }
               }

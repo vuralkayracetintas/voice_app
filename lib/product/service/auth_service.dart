@@ -10,28 +10,68 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthServices {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   // Google sign in
+  // Future<UserCredential> signInWithGoogle() async {
+  //   // Trigger the authentication flow
+  //   try {
+  //     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+  //     // Obtain the auth details from the request
+  //     final GoogleSignInAuthentication? googleAuth =
+  //         await googleUser?.authentication;
+
+  //     // Create a new credential
+  //     final credential = GoogleAuthProvider.credential(
+  //       accessToken: googleAuth?.accessToken,
+  //       idToken: googleAuth?.idToken,
+  //     );
+  //     print('googleUser: $googleUser');
+  //     print('credential: $credential');
+  //     print('giris basarili ');
+  //     // Once signed in, return the UserCredential
+  //     return await FirebaseAuth.instance.signInWithCredential(credential);
+  //   } catch (e) {
+  //     print('Google Sign-In Hatası: $e');
+  //     throw e; // Hatanın yeniden fırlatılması, uygun şekilde yönetmenizi sağlar.
+  //   }
+  // }
+
   Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
     try {
+      // Trigger the authentication flow
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      if (googleUser == null) {
+        // Kullanıcı işlemi iptal etti veya bir hata oluştu
+        throw Exception('Google Sign-In işlemi iptal edildi veya hata oluştu.');
+      }
 
       // Obtain the auth details from the request
       final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
+          await googleUser.authentication;
+
+      if (googleAuth == null ||
+          googleAuth.accessToken == null ||
+          googleAuth.idToken == null) {
+        // Erişim belirteci veya kimlik belirteci alınamadı
+        throw Exception(
+            'Google Sign-In işlemi başarısız: Erişim belirteci veya kimlik belirteci alınamadı.');
+      }
 
       // Create a new credential
       final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
       );
+
       print('googleUser: $googleUser');
       print('credential: $credential');
-      print('giris basarili ');
+      print('giriş başarılı ');
+
       // Once signed in, return the UserCredential
       return await FirebaseAuth.instance.signInWithCredential(credential);
     } catch (e) {
       print('Google Sign-In Hatası: $e');
-      throw e; // Hatanın yeniden fırlatılması, uygun şekilde yönetmenizi sağlar.
+      throw e;
     }
   }
 

@@ -5,6 +5,7 @@ import 'package:kartal/kartal.dart';
 import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
+import 'package:voice_app/product/repository/func/login_function.dart';
 import 'package:voice_app/product/service/auth_service.dart';
 import 'package:voice_app/product/widgets/icon/app_icon_widget.dart';
 import 'package:voice_app/product/widgets/buttons/custom_button.dart';
@@ -15,20 +16,7 @@ class WelcomeLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<void> isLoginGoogle() async {
-      UserCredential? userCredential = await AuthServices().signInWithGoogle();
-      if (userCredential != null) {
-        NavigationService.instance.navigateToPageRemoveAll(path: '/home');
-      }
-    }
-
-    Future<void> isLoginApple() async {
-      UserCredential? userCredential = await AuthServices().signInWithApple();
-      if (userCredential != null) {
-        NavigationService.instance.navigateToPageRemoveAll(path: '/home');
-      }
-    }
-
+    LoginFunction login = LoginFunction();
     return Scaffold(
       // backgroundColor: const Color(0xff0D0F13),
       body: Center(
@@ -50,7 +38,7 @@ class WelcomeLogin extends StatelessWidget {
               description: StringConstants.continueGoogle,
               backgroundColor: ColorConstants.darkBtnColor,
               // onPressed: () => GoogleSignInService().signInWithGoogle(),
-              onPressed: () => isLoginGoogle(),
+              onPressed: () => login.isLoginGoogle(),
             ),
             SizedBox(height: context.sized.height * 0.025),
             // apple sign in
@@ -59,7 +47,7 @@ class WelcomeLogin extends StatelessWidget {
               description: StringConstants.continueApple,
               svgColor: Colors.white,
               backgroundColor: ColorConstants.darkBtnColor,
-              onPressed: () => isLoginApple(),
+              onPressed: () => login.isLoginApple(),
             ),
             const Spacer(),
             const Divider(color: ColorConstants.dividerColor),

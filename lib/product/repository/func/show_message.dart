@@ -72,26 +72,30 @@ class ShowMessage {
         builder: (BuildContext context) {
           return CustomAlertCard(
             image: const Image(
-              image: AssetImage(StringConstants.user_img),
+              image: AssetImage(StringConstants.mail),
             ),
             title: Text(
-              'mail onay',
+              'Lutfen mail adresinizi onaylayiniz',
+              textAlign: TextAlign.center,
               style: context.general.textTheme.titleLarge?.copyWith(
                   color: ColorConstants.colorsWhite,
                   fontWeight: FontWeight.bold),
             ),
             desc: Text(
-              StringConstants.successDesc,
+              // StringConstants.successDesc,
+              'Kayit islemi gerceklestikten sonra mail adresinize gelen onay mailini onaylayiniz',
+              textAlign: TextAlign.center,
               style: context.general.textTheme.titleSmall?.copyWith(
                 color: ColorConstants.colorsWhite,
               ),
             ),
             onPressed: () {
               // NavigationService.instance.navigateToPageRemoveAll(path: '/home');
+              NavigationService.instance.navigateToBack();
             },
             buttonText: Text(
               // StringConstants.continueHome,
-              'mail onaylaaaaa',
+              'Tamam',
               style: context.general.textTheme.titleMedium?.copyWith(
                 color: ColorConstants.colorsWhite,
               ),
