@@ -13,6 +13,7 @@ import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/repository/auth/repository_store.dart';
 import 'package:voice_app/product/repository/voice_repo.dart';
 
+//internet connection
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
