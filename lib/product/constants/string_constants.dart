@@ -2,7 +2,7 @@ class StringConstants {
   StringConstants._();
 
   static const String baseSvg = 'assets/svg/';
-  static const String baseImage = 'assets/images/';
+  
   //Strings
   static const String dontAccount = 'Don\'t have an account?';
   static const String signUp = 'Sign Up';
@@ -37,8 +37,5 @@ class StringConstants {
   static const String mailSVG = '${baseSvg}mail.svg';
 
   //Images
-  static const String appIcon = '${baseImage}app_icon.png';
-  static const String success = '${baseImage}suc_login.png';
-  static const String userimg = '${baseImage}user.png';
-  static const String mail = '${baseImage}mail.png';
+ 
 }

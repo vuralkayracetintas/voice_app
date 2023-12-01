@@ -3,6 +3,7 @@ import 'package:voice_app/core/screens/forget_password/forget_password.dart';
 import 'package:voice_app/core/screens/login/sign_in_mail.dart';
 import 'package:voice_app/core/screens/login/welcome_login.dart';
 import 'package:voice_app/core/screens/signup/sign_up.dart';
+import 'package:voice_app/core/screens/splash/splash_screen.dart';
 import 'package:voice_app/main.dart';
 
 class NavigationRoute {
@@ -13,6 +14,8 @@ class NavigationRoute {
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/':
+        return MaterialPageRoute(builder: (context) => const SplashScreen());
+      case '/welcome':
         return MaterialPageRoute(builder: (context) => const WelcomeLogin());
       case '/sign_in_mail':
         return MaterialPageRoute(builder: (context) => const SignInMail());

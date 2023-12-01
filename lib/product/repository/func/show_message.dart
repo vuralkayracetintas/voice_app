@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:kartal/kartal.dart';
 import 'package:voice_app/core/navigation/navigation_service.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
+import 'package:voice_app/product/constants/image_constants.dart';
 import 'package:voice_app/product/constants/string_constants.dart';
 import 'package:voice_app/product/widgets/general/custom_alert_card.dart';
 
@@ -24,7 +25,7 @@ class ShowMessage {
         builder: (BuildContext context) {
           return CustomAlertCard(
             image: const Image(
-              image: AssetImage(StringConstants.success),
+              image: AssetImage(ImageConstants.success),
             ),
             title: Text(
               StringConstants.signInSuccess,
@@ -72,7 +73,7 @@ class ShowMessage {
         builder: (BuildContext context) {
           return CustomAlertCard(
             image: const Image(
-              image: AssetImage(StringConstants.mail),
+              image: AssetImage(ImageConstants.mail),
             ),
             title: Text(
               'Lutfen mail adresinizi onaylayiniz',
@@ -111,7 +112,7 @@ class ShowMessage {
         builder: (BuildContext context) {
           return CustomAlertCard(
               image: Image(
-                image: AssetImage(StringConstants.success),
+                image: AssetImage(ImageConstants.success),
               ),
               title: Text(
                 'Kayit Basarili',
