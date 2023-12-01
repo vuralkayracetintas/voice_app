@@ -12,10 +12,14 @@ import 'package:voice_app/firebase_options.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
 import 'package:voice_app/product/repository/auth/repository_store.dart';
 import 'package:voice_app/product/repository/voice_repo.dart';
+import 'package:voice_app/product/service/auth_service.dart';
 
 //internet connection
+AuthServices authServices = AuthServices();
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

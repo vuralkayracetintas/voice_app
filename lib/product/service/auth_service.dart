@@ -6,9 +6,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:voice_app/core/navigation/navigation_service.dart';
 
 class AuthServices {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
   // Google sign in
   // Future<UserCredential> signInWithGoogle() async {
   //   // Trigger the authentication flow
@@ -127,7 +129,7 @@ class AuthServices {
       {required String email, required String password}) async {
     final UserCredential userCredential = await _auth
         .signInWithEmailAndPassword(email: email, password: password);
-
+    checkUserLogin();
     // Kullanıcının e-posta adresi doğrulanmış mı kontrol et
     if (userCredential.user?.emailVerified ?? false) {
       print('Kullanıcı girişi başarılı: ${userCredential.user?.email}');
@@ -149,5 +151,23 @@ class AuthServices {
     await _auth.currentUser?.sendEmailVerification();
 
     return result.user;
+  }
+
+  Future<User?> checkUserLogin() async {
+    User? user = _auth.currentUser;
+
+    _auth.authStateChanges().listen((User? user) {
+      if (user != null) {
+        // Kullanıcı giriş yaptı, ana sayfaya yönlendir.
+        print('kullanici giris yapti ${user.email}');
+        NavigationService.instance.navigateToPage(path: '/home');
+      } else {
+        // Kullanıcı giriş yapmadı, giriş ekranına yönlendir.
+        print('kullanici giris yapmadi');
+        NavigationService.instance.navigateToPage(path: '/');
+      }
+    });
+
+    return user;
   }
 }
