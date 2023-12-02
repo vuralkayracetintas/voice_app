@@ -2,12 +2,13 @@ class StringConstants {
   StringConstants._();
 
   static const String baseSvg = 'assets/svg/';
-  
+
   //Strings
   static const String dontAccount = 'Don\'t have an account?';
   static const String signUp = 'Sign Up';
   static const String signIn = 'Sign In';
   static const String signInMail = 'Sign In with Mail';
+  static const String splashAppName = 'VOICE AI';
 
   static const String signInSuccess = 'Sign In Success!';
   static const String successDesc = 'Your succesfully sign in to Voice AI';
@@ -37,5 +38,4 @@ class StringConstants {
   static const String mailSVG = '${baseSvg}mail.svg';
 
   //Images
- 
 }

@@ -13,9 +13,9 @@ class NavigationRoute {
 
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case '/':
-      //   return MaterialPageRoute(builder: (context) => const SplashScreen());
       case '/':
+        return MaterialPageRoute(builder: (context) => const SplashScreen());
+      case '/welcome':
         return MaterialPageRoute(builder: (context) => const WelcomeLogin());
       case '/sign_in_mail':
         return MaterialPageRoute(builder: (context) => const SignInMail());

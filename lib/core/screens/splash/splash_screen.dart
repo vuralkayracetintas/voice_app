@@ -1,6 +1,10 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
 import 'package:voice_app/core/navigation/navigation_service.dart';
+
 import 'package:voice_app/product/constants/image_constants.dart';
+import 'package:voice_app/product/constants/string_constants.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,20 +28,39 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Stack(
         children: [
-          Image(
+          const Image(
             image: AssetImage(
-              'assets/images/ellipse_blur.png',
+              ImageConstants.ellipseBlur,
             ),
             fit: BoxFit.cover,
           ),
-          Align(
-            alignment: Alignment.center,
-            child: Image(
-              image: AssetImage(ImageConstants.splashIcon),
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Align(
+                alignment: Alignment.center,
+                child: Image(
+                  image: AssetImage(ImageConstants.vectorIcon),
+                ),
+              ),
+              SizedBox(
+                // height: 40,
+                height: context.sized.height * 0.047,
+              ),
+              AnimatedTextKit(
+                animatedTexts: [
+                  WavyAnimatedText(
+                    StringConstants.splashAppName,
+                    textStyle: context.general.textTheme.displaySmall?.copyWith(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ],
+                isRepeatingAnimation: true,
+              )
+            ],
           ),
         ],
       ),
