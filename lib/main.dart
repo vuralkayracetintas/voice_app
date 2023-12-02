@@ -11,6 +11,7 @@ import 'package:voice_app/core/navigation/navigation_service.dart';
 
 import 'package:voice_app/firebase_options.dart';
 import 'package:voice_app/product/constants/color_constants.dart';
+import 'package:voice_app/product/initialize/app_start.dart';
 import 'package:voice_app/product/repository/auth/repository_store.dart';
 import 'package:voice_app/product/repository/voice_repo.dart';
 import 'package:voice_app/product/service/auth_service.dart';
@@ -19,13 +20,7 @@ import 'package:voice_app/product/service/auth_service.dart';
 AuthServices authServices = AuthServices();
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  await Future.delayed(const Duration(seconds: 2));
-  FlutterNativeSplash.remove();
+  await ApplicationStart.initalize();
   runApp(const MyApp());
 }
 
