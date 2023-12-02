@@ -56,7 +56,16 @@ dependencies:
   firebase_auth: ^4.12.1
   sign_in_with_apple: ^5.0.0
   crypto: ^3.0.3
+  flutter_native_splash: ^2.3.6
+  animated_text_kit: ^4.2.2
 
+flutter_native_splash:
+  color: "#0D0F13"
+  color_dark: "#0D0F13"
+  image: assets/images/group1x3.png
+  android: true
+  ios: true
+  # ios_content_mode: "scaleAspectFit"
 dev_dependencies:
   flutter_test:
     sdk: flutter
