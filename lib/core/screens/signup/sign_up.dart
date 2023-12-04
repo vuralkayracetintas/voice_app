@@ -57,7 +57,7 @@ class _SignUpState extends State<SignUp> {
 
                 if (formStatus is SubmissionSuccess) {
                   // _goToWelcome(context);
-                  // message.showSuccessRegister(context);
+                  message.showSuccessRegister(context);
                   print('sssssss');
                 }
               },
