@@ -23,8 +23,8 @@ class NavigationRoute {
       case '/sign_up':
         return MaterialPageRoute(builder: (context) => const SignUp());
 
-      case '/home':
-        return MaterialPageRoute(builder: (context) => const MyHomePage());
+      // case '/home':
+      //   return MaterialPageRoute(builder: (context) => const MyHomePage());
       case '/forget-password':
         return MaterialPageRoute(builder: (context) => ForgetPassword());
       default:
